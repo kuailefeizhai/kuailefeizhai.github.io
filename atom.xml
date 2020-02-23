@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-23T16:39:55.254Z</updated>
+  <updated>2020-02-23T16:46:21.088Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="http://yoursite.com/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"/>
     <id>http://yoursite.com/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</id>
     <published>2020-02-23T15:08:54.000Z</published>
-    <updated>2020-02-23T16:39:55.254Z</updated>
+    <updated>2020-02-23T16:46:21.088Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;格式分析&quot;&gt;&lt;a href=&quot;#格式分析&quot; class=&quot;headerlink&quot; title=&quot;格式分析&quot;&gt;&lt;/a&gt;格式分析&lt;/h3&gt;&lt;h4 id=&quot;格式简介&quot;&gt;&lt;a href=&quot;#格式简介&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;格式分析&quot;&gt;&lt;a href=&quot;#格式分析&quot; class=&quot;headerlink&quot; title=&quot;格式分析&quot;&gt;&lt;/a&gt;格式分析&lt;/h3&gt;&lt;h4 id=&quot;格式简介&quot;&gt;&lt;a href=&quot;#格式简介&quot; class=&quot;headerlink&quot; title=&quot;格式简介&quot;&gt;&lt;/a&gt;格式简介&lt;/h4&gt;&lt;p&gt;BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，在Windows环境下运行的所有图象处理软件都支持BMP图象文件格式。Windows 3.0以前的BMP图文件格式与显示设备有关，因此把这种BMP图象文件格式称为设备相关位图DDB(device-dependent bitmap）文件格式。这种格式的特点是包含的图像信息较丰富，几乎不进行压缩，但由此导致了它与生俱生来的缺点–占用磁盘空间过大。所以，目前BMP在单机上比较流行。&lt;/p&gt;
+&lt;h4 id=&quot;文件结构&quot;&gt;&lt;a href=&quot;#文件结构&quot; class=&quot;headerlink&quot; title=&quot;文件结构&quot;&gt;&lt;/a&gt;文件结构&lt;/h4&gt;
     
     </summary>
     

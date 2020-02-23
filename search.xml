@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Bmp格式的存储方式</title>
+    <url>/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="格式分析"><a href="#格式分析" class="headerlink" title="格式分析"></a>格式分析</h3><h4 id="格式简介"><a href="#格式简介" class="headerlink" title="格式简介"></a>格式简介</h4><p>BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，在Windows环境下运行的所有图象处理软件都支持BMP图象文件格式。Windows 3.0以前的BMP图文件格式与显示设备有关，因此把这种BMP图象文件格式称为设备相关位图DDB(device-dependent bitmap）文件格式。这种格式的特点是包含的图像信息较丰富，几乎不进行压缩，但由此导致了它与生俱生来的缺点–占用磁盘空间过大。所以，目前BMP在单机上比较流行。</p>
+<h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p>位图文件可看成由4个部分组成：位图文件头（bitmap-file header）、位图信息头（bitmap-information header）、彩色表（color table）和定义位图的字节(位图数据，即图像数据，Data Bits 或Data Body)阵列，它具有如下所示的形式。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>post test</title>
     <url>/2020/02/23/post-test/</url>
     <content><![CDATA[<h3 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h3>]]></content>
@@ -27,6 +40,8 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="hexo主题"><a href="#hexo主题" class="headerlink" title="hexo主题"></a>hexo主题</h3><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">themes</a></p>
+<h3 id="Github链接格式"><a href="#Github链接格式" class="headerlink" title="Github链接格式"></a>Github链接格式</h3><p><a href="http://tholman.com/github-corners/" target="_blank" rel="noopener">Github Corners</a></p>
 ]]></content>
   </entry>
 </search>

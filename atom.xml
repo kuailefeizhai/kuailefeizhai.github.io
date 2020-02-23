@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-23T14:46:11.899Z</updated>
+  <updated>2020-02-23T16:30:09.387Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bmp格式的存储方式</title>
+    <link href="http://yoursite.com/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"/>
+    <id>http://yoursite.com/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-02-23T15:08:54.000Z</published>
+    <updated>2020-02-23T16:30:09.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;格式分析&quot;&gt;&lt;a href=&quot;#格式分析&quot; class=&quot;headerlink&quot; title=&quot;格式分析&quot;&gt;&lt;/a&gt;格式分析&lt;/h3&gt;&lt;h4 id=&quot;格式简介&quot;&gt;&lt;a href=&quot;#格式简介&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数字图像处理" scheme="http://yoursite.com/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>post test</title>
@@ -48,7 +75,7 @@
     <link href="http://yoursite.com/2020/02/23/hello-world/"/>
     <id>http://yoursite.com/2020/02/23/hello-world/</id>
     <published>2020-02-23T04:26:32.326Z</published>
-    <updated>2020-02-23T04:26:32.326Z</updated>
+    <updated>2020-02-23T16:22:57.918Z</updated>
     
     <summary type="html">
     

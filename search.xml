@@ -3,9 +3,59 @@
   <entry>
     <title>Bmp格式的存储方式</title>
     <url>/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="格式分析"><a href="#格式分析" class="headerlink" title="格式分析"></a>格式分析</h3><h4 id="格式简介"><a href="#格式简介" class="headerlink" title="格式简介"></a>格式简介</h4><p>BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，在Windows环境下运行的所有图象处理软件都支持BMP图象文件格式。Windows 3.0以前的BMP图文件格式与显示设备有关，因此把这种BMP图象文件格式称为设备相关位图DDB(device-dependent bitmap）文件格式。这种格式的特点是包含的图像信息较丰富，几乎不进行压缩，但由此导致了它与生俱生来的缺点–占用磁盘空间过大。所以，目前BMP在单机上比较流行。</p>
-<h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><a id="more"></a>
+    <content><![CDATA[<h3 id="格式分析"><a href="#格式分析" class="headerlink" title="格式分析"></a>格式分析</h3><blockquote>
+<h4 id="格式简介"><a href="#格式简介" class="headerlink" title="格式简介"></a>格式简介</h4><p>BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，在Windows环境下运行的所有图象处理软件都支持BMP图象文件格式。Windows 3.0以前的BMP图文件格式与显示设备有关，因此把这种BMP图象文件格式称为设备相关位图DDB(device-dependent bitmap）文件格式。这种格式的特点是包含的图像信息较丰富，几乎不进行压缩，但由此导致了它与生俱生来的缺点–占用磁盘空间过大。所以，目前BMP在单机上比较流行。</p>
+<h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4></blockquote>
+<a id="more"></a>
 <p>位图文件可看成由4个部分组成：位图文件头（bitmap-file header）、位图信息头（bitmap-information header）、彩色表（color table）和定义位图的字节(位图数据，即图像数据，Data Bits 或Data Body)阵列，它具有如下所示的形式。</p>
+<blockquote>
+<blockquote>
+<h5 id="位图文件头"><a href="#位图文件头" class="headerlink" title="位图文件头"></a>位图文件头</h5><p>Windows为bmp文件头定义了如下结构体：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef struct tagBITMAPFILEHEADER </span><br><span class="line">&#123;  </span><br><span class="line">    UINT16 bfType;    </span><br><span class="line">    DWORD bfSize; </span><br><span class="line">    UINT16 bfReserved1; </span><br><span class="line">    UINT16 bfReserved2; </span><br><span class="line">    DWORD bfOffBits;</span><br><span class="line">&#125; BITMAPFILEHEADER;</span><br></pre></td></tr></table></figure>
+<p>0000h 文件标识 2 bytes 两字节的内容用来识别位图的类型：<br>‘BM’ ：Windows 3.1x,95,NT，…<br>‘BA’ ：OS/2 Bitmap Array<br>‘CI’ ：OS/2 Color Icon<br>‘CP’ ：OS/2 Color Pointer<br>‘IC’ ：OS/2 Icon<br>‘PT’ ：OS/2 Pointer<br>注：因为OS/2系统并没有被普及开，所以在编程时，你只需判断第一个标识“BM”就行。<br>0002h File Size 1 dword 用字节表示的整个文件的大小<br>0006h Reserved 1 dword 保留，必须设置为0<br>000Ah Bitmap Data Offset 1 dword 从文件开始到位图数据开始之间的数据（bitmap data）之间的偏移量<br><img src="http://images.cnblogs.com/cnblogs_com/jason_yao/bmp_6.png"></p>
+<hr>
+<p>位图信息用BITMAPINFO结构来定义，它由位图信息头（bitmap-information header）和彩色表（color table）组成，前者用BITMAPINFOHEADER结构定义，后者用RGBQUAD结构定义。<br>BITMAPINFO结构具有如下形式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef struct tagBITMAPINFO &#123; &#x2F;* bmi *&#x2F;</span><br><span class="line">    BITMAPINFOHEADER bmiHeader;</span><br><span class="line">    RGBQUAD bmiColors[1];</span><br><span class="line">&#125; BITMAPINFO;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>bmiHeader<br>说明BITMAPINFOHEADER结构，其中包含了有关位图的尺寸及位格式等信息</li>
+<li>bmiColors<br>说明彩色表RGBQUAD结构的阵列，其中包含索引图像的真实RGB值。</li>
+</ul>
+<blockquote>
+<blockquote>
+<h5 id="位图信息头"><a href="#位图信息头" class="headerlink" title="位图信息头"></a>位图信息头</h5><p>BITMAPINFOHEADER结构包含有位图文件的大小、压缩类型和颜色格式，其结构定义为：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef struct tagBITMAPINFOHEADER &#123; &#x2F;* bmih *&#x2F;</span><br><span class="line">    DWORD biSize;</span><br><span class="line">    LONG biWidth;</span><br><span class="line">    LONG biHeight;</span><br><span class="line">    WORD biPlanes;</span><br><span class="line">    WORD biBitCount;</span><br><span class="line">    DWORD biCompression;</span><br><span class="line">    DWORD biSizeImage;</span><br><span class="line">    LONG biXPelsPerMeter;</span><br><span class="line">    LONG biYPelsPerMeter;</span><br><span class="line">    DWORD biClrUsed;</span><br><span class="line">    DWORD biClrImportant;</span><br><span class="line">&#125; BITMAPINFOHEADER;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li>biSize<br>说明BITMAPINFOHEADER结构所需要的字数。注：这个值并不一定是BITMAPINFOHEADER结构的尺寸，它也可能是sizeof(BITMAPV4HEADER）的值，或是sizeof(BITMAPV5HEADER）的值。这要根据该位图文件的格式版本来决定，不过，就现在的情况来看，绝大多数的BMP图像都是BITMAPINFOHEADER结构的（可能是后两者太新的缘故吧:-）。</li>
+<li>biWidth<br>说明图象的宽度，以象素为单位</li>
+<li>biHeight<br>说明图象的高度，以象素为单位。注：这个值除了用于描述图像的高度之外，它还有另一个用处，就是指明该图像是倒向的位图，还是正向的位图。如果该值是一个正数，说明图像是倒向的，如果该值是一个负数，则说明图像是正向的。大多数的BMP文件都是倒向的位图，也就是时，高度值是一个正数。（注：当高度值是一个负数时（正向图像），图像将不能被压缩（也就是说biCompression成员将不能是BI_RLE8或BI_RLE4）。</li>
+<li>biPlanes<br>为目标设备说明位面数，其值将总是被设为1</li>
+<li>biBitCount<br>说明比特数/象素，其值为1、4、8、16、24、或32</li>
+<li>biCompression<br>说明图象数据压缩的类型。其值可以是下述值之一：</li>
+<li>BI_RGB：没有压缩；</li>
+<li>BI_RLE8：每个象素8比特的RLE压缩编码，压缩格式由2字节组成（重复象素计数和颜色索引）；</li>
+<li>BI_RLE4：每个象素4比特的RLE压缩编码，压缩格式由2字节组成</li>
+<li>BI_BITFIELDS：每个象素的比特由指定的掩码决定。</li>
+<li>biSizeImage<br>说明图象的大小，以字节为单位。当用BI_RGB格式时，可设置为0</li>
+<li>biXPelsPerMeter<br>说明水平分辨率，用象素/米表示</li>
+<li>biYPelsPerMeter<br>说明垂直分辨率，用象素/米表示</li>
+<li>biClrUsed<br>说明位图实际使用的彩色表中的颜色索引数（设为0的话，则说明使用所有调色板项）</li>
+<li>biClrImportant<br>说明对图象显示有重要影响的颜色索引的数目，如果是0，表示都重要。<img src="http://images.cnblogs.com/cnblogs_com/jason_yao/bmp_7.png">
+
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<h5 id="彩色表定位"><a href="#彩色表定位" class="headerlink" title="彩色表定位"></a>彩色表定位</h5><p>应用程序可使用存储在biSize成员中的信息来查找在BITMAPINFO结构中的彩色表，如下所示：</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pColor &#x3D; ((LPSTR) pBitmapInfo + (WORD) (pBitmapInfo-&gt;bmiHeader.biSize))</span><br></pre></td></tr></table></figure>
+<p>biBitCount<br>biBitCount=1 表示位图最多有两种颜色，缺省情况下是黑色和白色，你也可以自己定义这两种颜色。图像信息头装调色板中将有两个调色板项，称为索引0和索引1。图象数据阵列中的每一位表示一个象素。如果一个位是0，显示时就使用索引0的RGB值，如果位是1，则使用索引1的RGB值。<br>biBitCount=4 表示位图最多有16种颜色。每个象素用4位表示，并用这4位作为彩色表的表项来查找该象素的颜色。例如，如果位图中的第一个字节为0x1F，它表示有两个象素，第一象素的颜色就在彩色表的第2表项中查找，而第二个象素的颜色就在彩色表的第16表项中查找。此时，调色板中缺省情况下会有16个RGB项。对应于索引0到索引15。<br>biBitCount=8 表示位图最多有256种颜色。每个象素用8位表示，并用这8位作为彩色表的表项来查找该象素的颜色。例如，如果位图中的第一个字节为0x1F，这个象素的颜色就在彩色表的第32表项中查找。此时，缺省情况下，调色板中会有256个RGB项，对应于索引0到索引255。<br>biBitCount=16 表示位图最多有65536种颜色。每个色素用16位（2个字节）表示。这种格式叫作高彩色，或叫增强型16位色，或64K色。它的情况比较复杂，当biCompression成员的值是BI_RGB时，它没有调色板。16位中，最低的5位表示蓝色分量，中间的5位表示绿色分量，高的5位表示红色分量，一共占用了15位，最高的一位保留，设为0。这种格式也被称作555 16位位图。如果biCompression成员的值是BI_BITFIELDS，那么情况就复杂了，首先是原来调色板的位置被三个DWORD变量占据，称为红、绿、蓝掩码。分别用于描述红、绿、蓝分量在16位中所占的位置。在Windows 95（或98）中，系统可接受两种格式的位域：555和565，在555格式下，红、绿、蓝的掩码分别是：0x7C00、0x03E0、0x001F，而在565格式下，它们则分别为：0xF800、0x07E0、0x001F。你在读取一个像素之后，可以分别用掩码“与”上像素值，从而提取出想要的颜色分量（当然还要再经过适当的左右移操作）。在NT系统中，则没有格式限制，只不过要求掩码之间不能有重叠。（注：这种格式的图像使用起来是比较麻烦的，不过因为它的显示效果接近于真彩，而图像数据又比真彩图像小的多，所以，它更多的被用于游戏软件）。<br>biBitCount=24 表示位图最多有1670万种颜色。这种位图没有调色板（bmiColors成员尺寸为0），在位数组中，每3个字节代表一个象素，分别对应于颜色R、G、B。<br>biBitCount=32 表示位图最多有4294967296(2的32次方）种颜色。这种位图的结构与16位位图结构非常类似，当biCompression成员的值是BI_RGB时，它也没有调色板，32位中有24位用于存放RGB值，顺序是：最高位—保留，红8位、绿8位、蓝8位。这种格式也被成为888 32位图。如果 biCompression成员的值是BI_BITFIELDS时，原来调色板的位置将被三个DWORD变量占据，成为红、绿、蓝掩码，分别用于描述红、绿、蓝分量在32位中所占的位置。在Windows 95(or 98）中，系统只接受888格式，也就是说三个掩码的值将只能是：0xFF0000、0xFF00、0xFF。而在NT系统中，你只要注意使掩码之间不产生重叠就行。（注：这种图像格式比较规整，因为它是DWORD对齐的，所以在内存中进行图像处理时可进行汇编级的代码优化（简单））。</p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -29,6 +79,7 @@
     <title>Hello World</title>
     <url>/2020/02/23/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<a id="more"></a>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>

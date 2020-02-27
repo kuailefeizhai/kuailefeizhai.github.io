@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-25T12:29:00.435Z</updated>
+  <updated>2020-02-27T08:42:46.796Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="http://yoursite.com/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/"/>
     <id>http://yoursite.com/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/</id>
     <published>2020-02-25T07:19:22.000Z</published>
-    <updated>2020-02-25T12:29:00.435Z</updated>
+    <updated>2020-02-27T08:42:46.796Z</updated>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;h3 id=&quot;相邻像素&quot;&gt;&lt;a href=&quot;#相邻像素&quot; class=&quot;headerlink&quot; title=&quot;相邻像素&quot;&gt;&lt;/a&gt;相邻像素&lt;/h3&gt;&lt;p&gt;位于坐标(x,y)处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：&lt;br&gt;(x+1,y),(x-1,y),(x,y+1),(x,y-1)&lt;br&gt;这组像素称为p的4邻域，用N&lt;sub&gt;4&lt;/sub&gt;(p)表示。&lt;br&gt;p的4个对角相邻像素的坐标如下：&lt;br&gt;(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)&lt;br&gt;并用N&lt;sub&gt;D&lt;/sub&gt;(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N&lt;sub&gt;8&lt;/sub&gt;(p)表示。&lt;/p&gt;
+&lt;h3 id=&quot;相邻像素&quot;&gt;&lt;a href=&quot;#相邻像素&quot; class=&quot;headerlink&quot; title=&quot;相邻像素&quot;&gt;&lt;/a&gt;相邻像素&lt;/h3&gt;&lt;p&gt;位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：&lt;br&gt;$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$&lt;br&gt;这组像素称为p的4邻域，用N&lt;sub&gt;4&lt;/sub&gt;(p)表示。&lt;br&gt;p的4个对角相邻像素的坐标如下：&lt;br&gt;$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$&lt;br&gt;并用N&lt;sub&gt;D&lt;/sub&gt;(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N&lt;sub&gt;8&lt;/sub&gt;(p)表示。&lt;/p&gt;
 &lt;h3 id=&quot;三种连接&quot;&gt;&lt;a href=&quot;#三种连接&quot; class=&quot;headerlink&quot; title=&quot;三种连接&quot;&gt;&lt;/a&gt;三种连接&lt;/h3&gt;&lt;/blockquote&gt;
     
     </summary>

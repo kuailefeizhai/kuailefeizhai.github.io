@@ -113,7 +113,7 @@
 
       
       <blockquote>
-<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标(x,y)处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>(x+1,y),(x-1,y),(x,y+1),(x,y-1)<br>这组像素称为p的4邻域，用N<sub>4</sub>(p)表示。<br>p的4个对角相邻像素的坐标如下：<br>(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)<br>并用N<sub>D</sub>(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N<sub>8</sub>(p)表示。</p>
+<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为p的4邻域，用N<sub>4</sub>(p)表示。<br>p的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用N<sub>D</sub>(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N<sub>8</sub>(p)表示。</p>
 <h3 id="三种连接"><a href="#三种连接" class="headerlink" title="三种连接"></a>三种连接</h3></blockquote>
       
       <a class="article-more-link" href="/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/">阅读更多...</a>
@@ -529,7 +529,7 @@
 
 <script>
   var ayerConfig = {
-    mathjax: false
+    mathjax: true
   }
 </script>
 
@@ -649,6 +649,25 @@
 </script>
 
 
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>

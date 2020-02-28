@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>接雨水</title>
+    <url>/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">原题链接</a></p>
+<blockquote>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4></blockquote>
+<h5 id="双指针法："><a href="#双指针法：" class="headerlink" title="双指针法："></a>双指针法：</h5><ol>
+<li>先找出最高的墙heightest;</li>
+<li>从左往右加到最高的墙，每次更新左边最高的墙temp；</li>
+<li>同理再从右往左加到最高的墙。</li>
+</ol>
+<blockquote>
+<h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def trap(self, height: List[int]) -&gt; int:</span><br><span class="line">        if len(height) &lt;&#x3D; 1:</span><br><span class="line">            return 0 </span><br><span class="line">        heightest &#x3D; height[0]</span><br><span class="line">        index &#x3D; 0</span><br><span class="line">        for i in range(1, len(height)):</span><br><span class="line">            if height[i] &gt; heightest:</span><br><span class="line">                index &#x3D; i</span><br><span class="line">                heightest &#x3D; height[i]</span><br><span class="line">        area &#x3D; 0</span><br><span class="line">        temp &#x3D; 0</span><br><span class="line">        for i in range(index):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        temp &#x3D; height[-1]</span><br><span class="line">        for i in reversed(range(index+1, len(height))):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        return area</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><p>时间复杂度：遍历找出最高的墙O(n);从左带最高和从右到最高加起来O(n);所以总共的复杂度O(n)；<br>空间复杂度：只用了temp和heightest存数，O(1)。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>栈</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>像素的4连接、8连接和m连接</title>
     <url>/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/</url>
     <content><![CDATA[<blockquote>

@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">247字</span>
+            <span class="post-count">249字</span>
         </span>
     </span>
 
@@ -101,15 +101,15 @@
 
       
       <blockquote>
-<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为p的4邻域，用N<sub>4</sub>(p)表示。<br>p的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用N<sub>D</sub>(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N<sub>8</sub>(p)表示。</p>
+<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为$p$的4邻域，用$N_4(p)$表示。<br>$p$的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用$N_D(p)$表示。这些点与上面4个邻点一起称为p的8邻域，用$N_8(p)$表示。</p>
 <h3 id="三种连接"><a href="#三种连接" class="headerlink" title="三种连接"></a>三种连接</h3></blockquote>
 <a id="more"></a>
 <ul>
-<li>(1) 4-连接：2个像素 p 和 q 在V 中取值且 q 在N<sub>4</sub>(p)中</li>
-<li>(2) 8-连接：2个像素 p 和 q 在V 中取值且 q 在N<sub>8</sub>(p)中</li>
+<li>(1) 4-连接：2个像素 p 和 q 在V 中取值且 q 在$N_4(p)$中</li>
+<li>(2) 8-连接：2个像素 p 和 q 在V 中取值且 q 在$N_8(p)$中</li>
 <li>(3) m-连接（混合连接）：2个像素 p 和 q 在V 中取值，且满足下列条件之一:<ol>
-<li>q在 N<sub>4</sub>(p)中</li>
-<li>q在 N<sub>8</sub>(p)中,且 N<sub>4</sub>(p) $\cap $  N<sub>4</sub>(q)是空集<img src="https://img-blog.csdn.net/2018022708514895">
+<li>q在 $N_4(p)$中</li>
+<li>q在 $N_8(p)$中,且 $N_4(p)$ $\cap $  $N_4(q)$是空集<img src="https://img-blog.csdn.net/2018022708514895">
 
 </li>
 </ol>

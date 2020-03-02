@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>柱状图中最大的矩形</title>
+    <url>/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">原题链接</a></p>
+<blockquote>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>从左往右找出能完整覆盖每一个柱子的最大矩形：<br>遍历一遍，遇到比当前大的柱子就存入栈中；遇到比当前小的柱子就依次出栈直到栈顶比当前柱子大，计算出对应出栈位置的最大矩形面积为：<br>$temparea = heights[stack[-1]] * (len(heights) - stack[-2] - 1)$<br>同时与$maxarea$比较得到最终结果</p>
+</blockquote>
+<blockquote>
+<h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def largestRectangleArea(self, heights: List[int]) -&gt; int:</span><br><span class="line">        max_area &#x3D; 0</span><br><span class="line">        stack &#x3D; [-1]</span><br><span class="line">        temp_area &#x3D; 0</span><br><span class="line">        for i in range(0, len(heights)):</span><br><span class="line">            while len(stack) &gt; 1 and heights[i] &lt; heights[stack[-1]]:</span><br><span class="line">                temp_area &#x3D; heights[stack.pop()] * (i - stack[-1] - 1)</span><br><span class="line">                if temp_area &gt; max_area:</span><br><span class="line">                    max_area &#x3D; temp_area</span><br><span class="line">            stack.append(i)</span><br><span class="line">        while len(stack) &gt; 1:</span><br><span class="line">            temp_area &#x3D; heights[stack[-1]] * (len(heights) - stack[-2] - 1)</span><br><span class="line">            if temp_area &gt; max_area:</span><br><span class="line">                max_area &#x3D; temp_area</span><br><span class="line">            stack.pop()</span><br><span class="line">        return max_area</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="时间上的优化"><a href="#时间上的优化" class="headerlink" title="时间上的优化"></a>时间上的优化</h4><p>在heights数组后加入一个-1，使</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while len(stack) &gt; 1:</span><br><span class="line">    temp_area &#x3D; heights[stack[-1]] * (len(heights) - stack[-2] - 1)</span><br><span class="line">    if temp_area &gt; max_area:</span><br><span class="line">        max_area &#x3D; temp_area</span><br><span class="line">    stack.pop()</span><br></pre></td></tr></table></figure>
+<p>这部分代码在上一个循环就得到执行</p>
+<blockquote>
+<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4></blockquote>
+<ul>
+<li>时间复杂度：$O(n),n$个数字每个会被压栈弹栈各一次。</li>
+<li>空间复杂度：$O(n)，$栈的大小在极端（顺序排列）情况下等于heights大小。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>接雨水</title>
     <url>/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">原题链接</a></p>
@@ -15,8 +45,11 @@
 <h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def trap(self, height: List[int]) -&gt; int:</span><br><span class="line">        if len(height) &lt;&#x3D; 1:</span><br><span class="line">            return 0 </span><br><span class="line">        heightest &#x3D; height[0]</span><br><span class="line">        index &#x3D; 0</span><br><span class="line">        for i in range(1, len(height)):</span><br><span class="line">            if height[i] &gt; heightest:</span><br><span class="line">                index &#x3D; i</span><br><span class="line">                heightest &#x3D; height[i]</span><br><span class="line">        area &#x3D; 0</span><br><span class="line">        temp &#x3D; 0</span><br><span class="line">        for i in range(index):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        temp &#x3D; height[-1]</span><br><span class="line">        for i in reversed(range(index+1, len(height))):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        return area</span><br></pre></td></tr></table></figure>
 <blockquote>
-<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4><p>时间复杂度：遍历找出最高的墙O(n);从左带最高和从右到最高加起来O(n);所以总共的复杂度O(n)；<br>空间复杂度：只用了temp和heightest存数，O(1)。</p>
-</blockquote>
+<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4></blockquote>
+<ul>
+<li>时间复杂度：遍历找出最高的墙$O(n)$;从左带最高和从右到最高加起来$O(n)$;所以总共的复杂度$O(n)$；</li>
+<li>空间复杂度：只用了temp和heightest存数，$O(1)$。</li>
+</ul>
 ]]></content>
       <categories>
         <category>leetcode刷题</category>
@@ -31,15 +64,15 @@
     <title>像素的4连接、8连接和m连接</title>
     <url>/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/</url>
     <content><![CDATA[<blockquote>
-<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为p的4邻域，用N<sub>4</sub>(p)表示。<br>p的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用N<sub>D</sub>(p)表示。这些点与上面4个邻点一起称为p的8邻域，用N<sub>8</sub>(p)表示。</p>
+<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为$p$的4邻域，用$N_4(p)$表示。<br>$p$的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用$N_D(p)$表示。这些点与上面4个邻点一起称为p的8邻域，用$N_8(p)$表示。</p>
 <h3 id="三种连接"><a href="#三种连接" class="headerlink" title="三种连接"></a>三种连接</h3></blockquote>
 <a id="more"></a>
 <ul>
-<li>(1) 4-连接：2个像素 p 和 q 在V 中取值且 q 在N<sub>4</sub>(p)中</li>
-<li>(2) 8-连接：2个像素 p 和 q 在V 中取值且 q 在N<sub>8</sub>(p)中</li>
+<li>(1) 4-连接：2个像素 p 和 q 在V 中取值且 q 在$N_4(p)$中</li>
+<li>(2) 8-连接：2个像素 p 和 q 在V 中取值且 q 在$N_8(p)$中</li>
 <li>(3) m-连接（混合连接）：2个像素 p 和 q 在V 中取值，且满足下列条件之一:<ol>
-<li>q在 N<sub>4</sub>(p)中</li>
-<li>q在 N<sub>8</sub>(p)中,且 N<sub>4</sub>(p) $\cap $  N<sub>4</sub>(q)是空集<img src="https://img-blog.csdn.net/2018022708514895">
+<li>q在 $N_4(p)$中</li>
+<li>q在 $N_8(p)$中,且 $N_4(p)$ $\cap $  $N_4(q)$是空集<img src="https://img-blog.csdn.net/2018022708514895">
 
 </li>
 </ol>

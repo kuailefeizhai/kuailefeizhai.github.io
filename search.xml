@@ -60,12 +60,16 @@
 <p>噪声图像<br><img src="/image/result5.jpg"></p>
 </blockquote>
 </blockquote>
+<a id="more"></a>
 <blockquote>
 <h4 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h4></blockquote>
 <ol>
-<li>就嗯算<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dSigma &#x3D;0.8;</span><br><span class="line">fK1&#x3D;1.0&#x2F;(2*dSigma*dSigma);</span><br><span class="line">fK2&#x3D;fK1&#x2F;pi;</span><br><span class="line">iSize &#x3D; 3;</span><br><span class="line">step &#x3D; floor(iSize&#x2F;2 + 0.5);</span><br><span class="line">for i &#x3D; 1 : iSize</span><br><span class="line">    x&#x3D;i-step;</span><br><span class="line">    fTemp&#x3D;fK2*exp(-x*x*fK1);</span><br><span class="line">    for j &#x3D; 1 : iSize</span><br><span class="line">        y&#x3D;j-step;</span><br><span class="line">        model(x+step,y+step)&#x3D;fTemp*exp(-y*y*fK1);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">dSum &#x3D; sum(sum(model));</span><br><span class="line">model &#x3D; model&#x2F;dSum;                     %Gauss核数值归一化</span><br></pre></td></tr></table></figure>
-得到方差0.8的3*3的高斯滤波矩阵<a id="more"></a></li>
-<li>见<a href="https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补" target="_blank" rel="noopener">https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补</a><blockquote>
+<li><p>就嗯算</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dSigma &#x3D;0.8;</span><br><span class="line">fK1&#x3D;1.0&#x2F;(2*dSigma*dSigma);</span><br><span class="line">fK2&#x3D;fK1&#x2F;pi;</span><br><span class="line">iSize &#x3D; 3;</span><br><span class="line">step &#x3D; floor(iSize&#x2F;2 + 0.5);</span><br><span class="line">for i &#x3D; 1 : iSize</span><br><span class="line">    x&#x3D;i-step;</span><br><span class="line">    fTemp&#x3D;fK2*exp(-x*x*fK1);</span><br><span class="line">    for j &#x3D; 1 : iSize</span><br><span class="line">        y&#x3D;j-step;</span><br><span class="line">        model(x+step,y+step)&#x3D;fTemp*exp(-y*y*fK1);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">dSum &#x3D; sum(sum(model));</span><br><span class="line">model &#x3D; model&#x2F;dSum;                     %Gauss核数值归一化</span><br></pre></td></tr></table></figure>
+<p>得到方差0.8的3*3的高斯滤波矩阵</p>
+</li>
+<li><p>见<a href="https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补" target="_blank" rel="noopener">https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补</a></p>
+<blockquote>
 <h4 id="滤波处理"><a href="#滤波处理" class="headerlink" title="滤波处理"></a>滤波处理</h4></blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g_copy &#x3D; g;</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        if i &gt; 1 &amp;&amp; j &gt; 1 &amp;&amp; i &lt; row &amp;&amp; j&lt;cloumn</span><br><span class="line">            result(i,j) &#x3D; model(1,1)*g_copy(i-1,j-1) +model(2,1)*g_copy(i,j-1) +model(1,3)*g_copy(i-1,j+1) +model(2,1)*g_copy(i,j-1) +model(3,1)*g_copy(i+1,j-1) +model(3,2)*g_copy(i+1,j) +model(3,3)*g_copy(i+1,j+1) +model(1,2)*g_copy(i-1,j)+model(2,2)*g_copy(i,j) ;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -143,8 +147,8 @@
         <category>leetcode刷题</category>
       </categories>
       <tags>
-        <tag>栈</tag>
         <tag>算法</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -172,8 +176,8 @@
         <category>leetcode刷题</category>
       </categories>
       <tags>
-        <tag>栈</tag>
         <tag>算法</tag>
+        <tag>栈</tag>
         <tag>双指针</tag>
       </tags>
   </entry>

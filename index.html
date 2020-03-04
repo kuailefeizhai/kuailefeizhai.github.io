@@ -209,11 +209,6 @@
 <p>噪声图像<br><img src="/image/result5.jpg"></p>
 </blockquote>
 </blockquote>
-<blockquote>
-<h4 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h4></blockquote>
-<ol>
-<li>就嗯算<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dSigma &#x3D;0.8;</span><br><span class="line">fK1&#x3D;1.0&#x2F;(2*dSigma*dSigma);</span><br><span class="line">fK2&#x3D;fK1&#x2F;pi;</span><br><span class="line">iSize &#x3D; 3;</span><br><span class="line">step &#x3D; floor(iSize&#x2F;2 + 0.5);</span><br><span class="line">for i &#x3D; 1 : iSize</span><br><span class="line">    x&#x3D;i-step;</span><br><span class="line">    fTemp&#x3D;fK2*exp(-x*x*fK1);</span><br><span class="line">    for j &#x3D; 1 : iSize</span><br><span class="line">        y&#x3D;j-step;</span><br><span class="line">        model(x+step,y+step)&#x3D;fTemp*exp(-y*y*fK1);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">dSum &#x3D; sum(sum(model));</span><br><span class="line">model &#x3D; model&#x2F;dSum;                     %Gauss核数值归一化</span><br></pre></td></tr></table></figure>
-得到方差0.8的3*3的高斯滤波矩阵
       
       <a class="article-more-link" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/">阅读更多...</a>
       

@@ -213,51 +213,10 @@
 <h4 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h4></blockquote>
 <ol>
 <li>就嗯算<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dSigma &#x3D;0.8;</span><br><span class="line">fK1&#x3D;1.0&#x2F;(2*dSigma*dSigma);</span><br><span class="line">fK2&#x3D;fK1&#x2F;pi;</span><br><span class="line">iSize &#x3D; 3;</span><br><span class="line">step &#x3D; floor(iSize&#x2F;2 + 0.5);</span><br><span class="line">for i &#x3D; 1 : iSize</span><br><span class="line">    x&#x3D;i-step;</span><br><span class="line">    fTemp&#x3D;fK2*exp(-x*x*fK1);</span><br><span class="line">    for j &#x3D; 1 : iSize</span><br><span class="line">        y&#x3D;j-step;</span><br><span class="line">        model(x+step,y+step)&#x3D;fTemp*exp(-y*y*fK1);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">dSum &#x3D; sum(sum(model));</span><br><span class="line">model &#x3D; model&#x2F;dSum;                     %Gauss核数值归一化</span><br></pre></td></tr></table></figure>
-得到方差0.8的3*3的高斯滤波矩阵</li>
-<li>见<a href="https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补" target="_blank" rel="noopener">https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补</a><blockquote>
-<h4 id="滤波处理"><a href="#滤波处理" class="headerlink" title="滤波处理"></a>滤波处理</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">g_copy &#x3D; g;</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        if i &gt; 1 &amp;&amp; j &gt; 1 &amp;&amp; i &lt; row &amp;&amp; j&lt;cloumn</span><br><span class="line">            result(i,j) &#x3D; model(1,1)*g_copy(i-1,j-1) +model(2,1)*g_copy(i,j-1) +model(1,3)*g_copy(i-1,j+1) +model(2,1)*g_copy(i,j-1) +model(3,1)*g_copy(i+1,j-1) +model(3,2)*g_copy(i+1,j) +model(3,3)*g_copy(i+1,j+1) +model(1,2)*g_copy(i-1,j)+model(2,2)*g_copy(i,j) ;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result6.jpg">
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<h4 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h4><p>这里用能减少边缘影响的半邻域均值滤波，不过这幅图没什么边缘看不出来效果<br>具体算法参看下图<br><img src="/image/reason1.jpg"></p>
-</blockquote>
-<ul>
-<li>代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(g);</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 2:row-1</span><br><span class="line">    for j &#x3D; 2:cloumn -1</span><br><span class="line">        model &#x3D; sort([h(i-1,j-1),h(i-1,j),h(i-1,j+1),h(i,j-1),h(i,j+1),h(i+1,j-1),h(i+1,j),h(i+1,j+1)]);</span><br><span class="line">        for z&#x3D;1:8</span><br><span class="line">            model(z) &#x3D; uint16(model(z));</span><br><span class="line">        end</span><br><span class="line">        m3 &#x3D; (model(1)+model(2)+model(3))&#x2F;3;</span><br><span class="line">        m6 &#x3D; (model(4)+model(5)+model(6)+model(7)+model(8)+h(i,j))&#x2F;6;</span><br><span class="line">        if abs(m3-m6)&lt;&#x3D;5</span><br><span class="line">            result(i,j) &#x3D; (sum(model)+h(i,j))&#x2F;9;</span><br><span class="line">        else </span><br><span class="line">            result(i,j) &#x3D; m6;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果：-1"><a href="#运行结果：-1" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result7.jpg">
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<h4 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h4><p>这个简单，直接取中位数就行，这里用了3*3邻域的中值</p>
-</blockquote>
-<ul>
-<li>代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(g);</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 2:row-1</span><br><span class="line">    for j &#x3D; 2:cloumn -1</span><br><span class="line">        model &#x3D; sort([h(i-1,j-1),h(i-1,j),h(i-1,j+1),h(i,j-1),h(i,j+1),h(i+1,j-1),h(i+1,j),h(i+1,j+1)]);</span><br><span class="line">        result(i,j) &#x3D; model(5);</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果：-2"><a href="#运行结果：-2" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result8.jpg">
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<h3 id="对比一下椒盐噪声下的三种滤波效果"><a href="#对比一下椒盐噪声下的三种滤波效果" class="headerlink" title="对比一下椒盐噪声下的三种滤波效果"></a>对比一下椒盐噪声下的三种滤波效果</h3><h4 id="先看加噪后的图"><a href="#先看加噪后的图" class="headerlink" title="先看加噪后的图"></a>先看加噪后的图</h4><img src="/image/result9.jpg">
-</blockquote>
-<blockquote>
-<h4 id="高斯滤波后的图"><a href="#高斯滤波后的图" class="headerlink" title="高斯滤波后的图"></a>高斯滤波后的图</h4><img src="/image/result10.jpg">
-</blockquote>
-<blockquote>
-<h4 id="均值滤波后的图"><a href="#均值滤波后的图" class="headerlink" title="均值滤波后的图"></a>均值滤波后的图</h4><img src="/image/result11.jpg">
-</blockquote>
-<blockquote>
-<h4 id="中值滤波后的图"><a href="#中值滤波后的图" class="headerlink" title="中值滤波后的图"></a>中值滤波后的图</h4><img src="/image/result12.jpg">
-对于椒盐噪声来说似乎中值滤波的效果最好
-</blockquote>
-<hr>
-<p>好像每种噪声都是高斯滤波最差，不知道是不是我设计的问题qaq</p>
-
+得到方差0.8的3*3的高斯滤波矩阵
+      
+      <a class="article-more-link" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/">阅读更多...</a>
+      
       
       <!-- reward -->
       

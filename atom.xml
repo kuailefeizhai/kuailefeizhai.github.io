@@ -54,7 +54,7 @@
     <link href="http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/"/>
     <id>http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/</id>
     <published>2020-03-03T08:13:48.000Z</published>
-    <updated>2020-03-04T15:20:16.271Z</updated>
+    <updated>2020-03-04T15:23:50.864Z</updated>
     
     <summary type="html">
     
@@ -67,7 +67,7 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;g &amp;#x3D; imnoise(f1,&amp;#39;gaussian&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;噪声图像&lt;br&gt;&lt;img src=&quot;/image/result5.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;噪声图像&lt;br&gt;&lt;img src=&quot;/image/result5.png&quot;&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
     

@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>图像直方图均衡化及规定化</title>
+    <url>/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/</url>
+    <content><![CDATA[<blockquote>
+<h3 id="均衡化"><a href="#均衡化" class="headerlink" title="均衡化"></a>均衡化</h3></blockquote>
+<ul>
+<li>读取原图像：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br></pre></td></tr></table></figure>
+如果是彩色图像则需转换成灰度图像：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1&#x3D;rgb2gray(f);</span><br></pre></td></tr></table></figure></li>
+<li>计算累计直方图CDF：</li>
+</ul>
+<ol>
+<li><p>直方图概率表示：<br>$p_s(s_k)=\frac{n_k}{n}$</p>
+</li>
+<li><p>累计直方图表示：<br>$\sum_{i=0}^k p_s(s_i)$<br>为了减少算法复杂度，先对f排序，通过序号求CDF：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>通过映射后的数据得到均衡化的新图<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>全代码：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%读取原图</span><br><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br><span class="line">% 展示原图及直方图</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;原图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(f),title(&#39;原图像直方图&#39;)</span><br><span class="line">[row,cloumn] &#x3D; size(f);</span><br><span class="line">%预处理</span><br><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">L &#x3D; uint16(255);</span><br><span class="line">%求出n</span><br><span class="line">n &#x3D; row * cloumn;</span><br><span class="line">% %计算累计直方图CDF</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">%映射</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;均衡化后的图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(result),title(&#39;均衡化后的图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(result),title(&#39;均衡化后的图像直方图&#39;)</span><br></pre></td></tr></table></figure></li>
+<li>运行结果：<br>原图像及直方图：<img src="/image/result1.png">
+均衡化后的图像及直方图：
+<img src="/image/result2.png">
+
+</li>
+</ul>
+<blockquote>
+<h3 id="规定化"><a href="#规定化" class="headerlink" title="规定化"></a>规定化</h3></blockquote>
+<ul>
+<li>对数据预处理操作与以上操作相似；</li>
+<li>规定一个直方图：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for i&#x3D;1:128</span><br><span class="line">   p(end+1)&#x3D;-1&#x2F;127^2*(i-1)+1&#x2F;127;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">for i&#x3D;129:255  </span><br><span class="line">  p(end+1)&#x3D;1&#x2F;127^2*(i-2)-1&#x2F;127;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>计算累计直方图并映射：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S &#x3D; [0];</span><br><span class="line">for i &#x3D; 1:L-1</span><br><span class="line">    S(end+1) &#x3D; S(end) + p(i);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>运行结果：<br>规定的直方图：<img src="/image/result3.png">
+规定化的图像及直方图：
+<img src="/image/result4.png"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+        <tag>图像的基本操作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图像的加噪与去噪</title>
+    <url>/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+        <tag>图像的基本操作</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>柱状图中最大的矩形</title>
     <url>/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">原题链接</a></p>
@@ -153,17 +210,6 @@
       </categories>
       <tags>
         <tag>数字图像处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>post test</title>
-    <url>/2020/02/23/post-test/</url>
-    <content><![CDATA[<h3 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h3>]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
   <entry>

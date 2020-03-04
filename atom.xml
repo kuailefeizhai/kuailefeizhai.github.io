@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-02T12:39:00.670Z</updated>
+  <updated>2020-03-04T07:24:45.440Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图像直方图均衡化及规定化</title>
+    <link href="http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/"/>
+    <id>http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/</id>
+    <published>2020-03-03T12:27:53.000Z</published>
+    <updated>2020-03-04T07:24:45.440Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;h3 id=&quot;均衡化&quot;&gt;&lt;a href=&quot;#均衡化&quot; class=&quot;headerlink&quot; title=&quot;均衡化&quot;&gt;&lt;/a&gt;均衡化&lt;/h3&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;读取原图像：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f &amp;#x3D; imread(&amp;#39;fig1.jpg&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+如果是彩色图像则需转换成灰度图像：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f1&amp;#x3D;rgb2gray(f);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;计算累计直方图CDF：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;直方图概率表示：&lt;br&gt;$p_s(s_k)=\frac{n_k}{n}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;累计直方图表示：&lt;br&gt;$\sum_{i=0}^k p_s(s_i)$&lt;br&gt;为了减少算法复杂度，先对f排序，通过序号求CDF：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数字图像处理" scheme="http://yoursite.com/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="图像的基本操作" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图像的加噪与去噪</title>
+    <link href="http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/"/>
+    <id>http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/</id>
+    <published>2020-03-03T08:13:48.000Z</published>
+    <updated>2020-03-03T08:16:54.727Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="数字图像处理" scheme="http://yoursite.com/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="图像的基本操作" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>柱状图中最大的矩形</title>
@@ -123,33 +177,6 @@
     
     
       <category term="数字图像处理" scheme="http://yoursite.com/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>post test</title>
-    <link href="http://yoursite.com/2020/02/23/post-test/"/>
-    <id>http://yoursite.com/2020/02/23/post-test/</id>
-    <published>2020-02-23T04:31:00.000Z</published>
-    <updated>2020-02-23T14:46:11.899Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;这是一个测试&quot;&gt;&lt;a href=&quot;#这是一个测试&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="test" scheme="http://yoursite.com/categories/test/"/>
-    
-    
-      <category term="test" scheme="http://yoursite.com/tags/test/"/>
     
   </entry>
   

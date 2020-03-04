@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    post test |  HA
+    图像直方图均衡化及规定化 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-post-test" class="article article-type-post" itemscope
+  <article id="post-图像直方图均衡化及规定化" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  post test
+  图像直方图均衡化及规定化
 </h1>
   
 
@@ -49,12 +49,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/02/23/post-test/" class="article-date">
-  <time datetime="2020-02-23T04:31:00.000Z" itemprop="datePublished">2020-02-23</time>
+      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" class="article-date">
+  <time datetime="2020-03-03T12:27:53.000Z" itemprop="datePublished">2020-03-03</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/test/">test</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
   </div>
 
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">6字</span>
+            <span class="post-count">616字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">3分钟</span>
         </span>
     </span>
 </div>
@@ -100,7 +100,40 @@
       
 
       
-      <h3 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h3>
+      <blockquote>
+<h3 id="均衡化"><a href="#均衡化" class="headerlink" title="均衡化"></a>均衡化</h3></blockquote>
+<ul>
+<li>读取原图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br></pre></td></tr></table></figure>
+如果是彩色图像则需转换成灰度图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1&#x3D;rgb2gray(f);</span><br></pre></td></tr></table></figure></li>
+<li>计算累计直方图CDF：</li>
+</ul>
+<ol>
+<li><p>直方图概率表示：<br>$p_s(s_k)=\frac{n_k}{n}$</p>
+</li>
+<li><p>累计直方图表示：<br>$\sum_{i=0}^k p_s(s_i)$<br>为了减少算法复杂度，先对f排序，通过序号求CDF：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>通过映射后的数据得到均衡化的新图<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>全代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">%读取原图</span><br><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br><span class="line">% 展示原图及直方图</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;原图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(f),title(&#39;原图像直方图&#39;)</span><br><span class="line">[row,cloumn] &#x3D; size(f);</span><br><span class="line">%预处理</span><br><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">L &#x3D; uint16(255);</span><br><span class="line">%求出n</span><br><span class="line">n &#x3D; row * cloumn;</span><br><span class="line">% %计算累计直方图CDF</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">%映射</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;均衡化后的图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(result),title(&#39;均衡化后的图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(result),title(&#39;均衡化后的图像直方图&#39;)</span><br></pre></td></tr></table></figure></li>
+<li>运行结果：<br>原图像及直方图：<img src="/image/result1.png">
+均衡化后的图像及直方图：
+<img src="/image/result2.png">
+
+</li>
+</ul>
+<blockquote>
+<h3 id="规定化"><a href="#规定化" class="headerlink" title="规定化"></a>规定化</h3></blockquote>
+<ul>
+<li>对数据预处理操作与以上操作相似；</li>
+<li>规定一个直方图：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i&#x3D;1:128</span><br><span class="line">   p(end+1)&#x3D;-1&#x2F;127^2*(i-1)+1&#x2F;127;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">for i&#x3D;129:255  </span><br><span class="line">  p(end+1)&#x3D;1&#x2F;127^2*(i-2)-1&#x2F;127;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>计算累计直方图并映射：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">S &#x3D; [0];</span><br><span class="line">for i &#x3D; 1:L-1</span><br><span class="line">    S(end+1) &#x3D; S(end) + p(i);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
+<li>运行结果：<br>规定的直方图：<img src="/image/result3.png">
+规定化的图像及直方图：
+<img src="/image/result4.png"></li>
+</ul>
+
       
       <!-- reward -->
       
@@ -169,14 +202,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/02/23/post-test/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
 
 
     </footer>
@@ -187,19 +220,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Bmp格式的存储方式
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/23/hello-world/" class="article-nav-link">
+      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hello World</div>
+        <div class="article-nav-title">图像的加噪与去噪</div>
       </a>
     
   </nav>

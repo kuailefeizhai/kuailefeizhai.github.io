@@ -69,6 +69,173 @@
     
     
     
+    <article id="post-字符串的最大公因子" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/"
+    >字符串的最大公因子</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/" class="article-date">
+  <time datetime="2020-03-12T11:22:18.000Z" itemprop="datePublished">2020-03-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/greatest-common-divisor-of-strings/" target="_blank" rel="noopener">原题链接</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>先用<a href="https://baike.baidu.com/item/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/1647675?fromtitle=%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95&fromid=4625352&fr=aladdin" target="_blank" rel="noopener">辗转相除法</a>求出字符串长度的最大公因子，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">  while a !&#x3D; 0:</span><br><span class="line">      a, b &#x3D; b % a, a </span><br><span class="line">  return b</span><br></pre></td></tr></table></figure>
+然后我发现原来python的math里本来就有gcd函数。。。</li>
+<li>判断两个字符串正反相加是否相等<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>import math
+class Solution:
+  def gcdOfStrings(self, str1: str, str2: str) -&gt; str:
+      ans_len = math.gcd(len(str1),len( str2))
+      ans = str1[: ans_len]
+      if str1 + str2 == str2 + str1:
+          return ans
+      return &quot;&quot;</code></pre><h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3></li>
+<li>时间复杂度：字符串的拼接比较需要$O(n)$，最大公因子的计算需要$O(log n)$，总时间复杂度为$O(n)$</li>
+<li>空间复杂度：$O(n)$来存放$str1+str2$</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/" rel="tag">辗转相除法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-常见的Linux命令(一)--文件命令" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/"
+    >常见的Linux命令(一)--文件命令</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-03-12T11:18:18.000Z" itemprop="datePublished">2020-03-12</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><ul>
+<li>命名英文原意：list</li>
+<li>功能：显示目录文件</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-a, –all            不隐藏任何以. 开始的项目<br>-A, –almost-all        列出除. 及.. 以外的任何项目<br>–author            与-l 同时使用时列出每个文件的作者<br>-b, –escape            以八进制溢出序列表示不可打印的字符<br> -l                使用较长格式列出信息<br>  -r, –reverse            逆序排列<br>  -R, –recursive        递归显示子目录<br>  -s, –size            以块数形式显示每个文件分配的尺寸<br>  -g                类似-l，但不列出所有者</p>
+      
+      <a class="article-more-link" href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%9F%BA%E7%A1%80/" rel="tag">Linux基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-图像直方图均衡化及规定化" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 

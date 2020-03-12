@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    图像直方图均衡化及规定化 |  HA
+    常见的Linux命令(一)--文件命令 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-图像直方图均衡化及规定化" class="article article-type-post" itemscope
+  <article id="post-常见的Linux命令(一)--文件命令" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  图像直方图均衡化及规定化
+  常见的Linux命令(一)--文件命令
 </h1>
   
 
@@ -49,8 +49,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" class="article-date">
-  <time datetime="2020-03-03T12:27:53.000Z" itemprop="datePublished">2020-03-03</time>
+      <a href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-03-12T11:18:18.000Z" itemprop="datePublished">2020-03-12</time>
 </a>
       
   <div class="article-category">
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">616字</span>
+            <span class="post-count">895字</span>
         </span>
     </span>
 
@@ -100,39 +100,66 @@
       
 
       
-      <blockquote>
-<h3 id="均衡化"><a href="#均衡化" class="headerlink" title="均衡化"></a>均衡化</h3></blockquote>
-<ul>
-<li>读取原图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br></pre></td></tr></table></figure>
-如果是彩色图像则需转换成灰度图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1&#x3D;rgb2gray(f);</span><br></pre></td></tr></table></figure></li>
-<li>计算累计直方图CDF：</li>
+      <h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><ul>
+<li>命名英文原意：list</li>
+<li>功能：显示目录文件</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
 </ul>
-<ol>
-<li><p>直方图概率表示：<br>$p_s(s_k)=\frac{n_k}{n}$</p>
-</li>
-<li><p>累计直方图表示：<br>$\sum_{i=0}^k p_s(s_i)$<br>为了减少算法复杂度，先对f排序，通过序号求CDF：</p>
+<p>-a, –all            不隐藏任何以. 开始的项目<br>-A, –almost-all        列出除. 及.. 以外的任何项目<br>–author            与-l 同时使用时列出每个文件的作者<br>-b, –escape            以八进制溢出序列表示不可打印的字符<br> -l                使用较长格式列出信息<br>  -r, –reverse            逆序排列<br>  -R, –recursive        递归显示子目录<br>  -s, –size            以块数形式显示每个文件分配的尺寸<br>  -g                类似-l，但不列出所有者</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>通过映射后的数据得到均衡化的新图<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
-<li>全代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">%读取原图</span><br><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br><span class="line">% 展示原图及直方图</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;原图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(f),title(&#39;原图像直方图&#39;)</span><br><span class="line">[row,cloumn] &#x3D; size(f);</span><br><span class="line">%预处理</span><br><span class="line">g&#x3D;reshape(f,row*cloumn,1);</span><br><span class="line">g_sort&#x3D;sortrows(g);%按灰度值排序方便统计</span><br><span class="line">[a, b, c] &#x3D; unique(g_sort);%a为不同种灰度值数组，b为不同灰度值第一次出现的索引号</span><br><span class="line">L &#x3D; uint16(255);</span><br><span class="line">%求出n</span><br><span class="line">n &#x3D; row * cloumn;</span><br><span class="line">% %计算累计直方图CDF</span><br><span class="line">S &#x3D; [];</span><br><span class="line">for i &#x3D; 1:L</span><br><span class="line">    S(end+1) &#x3D; (b(i+1)&#x2F;n);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">%映射</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure(&#39;NumberTitle&#39;, &#39;on&#39;, &#39;Name&#39;, &#39;均衡化后的图&#39;);</span><br><span class="line">subplot(2,1,1);imshow(result),title(&#39;均衡化后的图像&#39;);</span><br><span class="line">subplot(2,1,2);imhist(result),title(&#39;均衡化后的图像直方图&#39;)</span><br></pre></td></tr></table></figure></li>
-<li>运行结果：<br>原图像及直方图：<img src="/image/result1.png">
-均衡化后的图像及直方图：
-<img src="/image/result2.png">
+<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><ul>
+<li>命名英文原意：print working directory</li>
+<li>功能：显示当前所在的工作目录</li>
+</ul>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><ul>
+<li>命名英文原意：change directory</li>
+<li>功能：切换目录</li>
+</ul>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><ul>
+<li>命名英文原意：make directory</li>
+<li>功能：创建新目录</li>
+</ul>
+<h4 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h4><ul>
+<li>命名英文原意：remove directory</li>
+<li>功能：删除空目录</li>
+</ul>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><ul>
+<li>命令英文原意：concatenate and display files</li>
+<li>功能：连接文件并打印到标准输出设备上</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-E 在每一行的末尾显示$<br>-n 为显示行添加行号</p>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><ul>
+<li>功能：分页显示文件内容</li>
+</ul>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><ul>
+<li>功能：复制文件到某一处</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [参数] &lt;源文件路径&gt; &lt;目标文件路径&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-p ：连同文件的属性一起复制，而非使用默认方式，常用于备份<br>-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行<br>-r ：递归持续复制，用于目录的复制行为<br>-u ：目标文件与源文件有差异时才会复制</p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><ul>
+<li>功能：删除文件或目录</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [参数] &lt;目标文件路径&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-f ：就是force的意思，忽略不存在的文件，不会出现警告消息<br>-i ：互动模式，在删除前会询问用户是否操作<br>-r ：递归删除，最常用于目录删除，它是一个非常危险的参数</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><ul>
+<li>功能：用来寻找文件或目录</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find 路径 [参数]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-name filename ：找出文件名为filename的文件<br>-size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件<br>-tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；<br>-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；</p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><ul>
+<li>功能：在文件中搜索匹配的字符并进行输出</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep[参数] &lt;要找的字串&gt; &lt;要寻找字串的源文件&gt;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<blockquote>
-<h3 id="规定化"><a href="#规定化" class="headerlink" title="规定化"></a>规定化</h3></blockquote>
-<ul>
-<li>对数据预处理操作与以上操作相似；</li>
-<li>规定一个直方图：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for i&#x3D;1:128</span><br><span class="line">   p(end+1)&#x3D;-1&#x2F;127^2*(i-1)+1&#x2F;127;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">for i&#x3D;129:255  </span><br><span class="line">  p(end+1)&#x3D;1&#x2F;127^2*(i-2)-1&#x2F;127;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
-<li>计算累计直方图并映射：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">S &#x3D; [0];</span><br><span class="line">for i &#x3D; 1:L-1</span><br><span class="line">    S(end+1) &#x3D; S(end) + p(i);</span><br><span class="line">end</span><br><span class="line">S(end+1) &#x3D; 1 ;</span><br><span class="line">h &#x3D; uint16(f);</span><br><span class="line">result &#x3D; f;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        result(i,j) &#x3D; floor(L*S(h(i,j)+1));</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure></li>
-<li>运行结果：<br>规定的直方图：<img src="/image/result3.png">
-规定化的图像及直方图：
-<img src="/image/result4.png"></li>
+<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><ul>
+<li>功能：能够将用户所指定的文件或目录打包成一个文件，也可以通过指定参数开启压缩/解压缩功能</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar [参数] &lt;文件&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p>-c ：新建打包文件<br> -t ：查看打包文件的内容含有哪些文件名<br> -x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同<br>一条命令中<br> -j ：通过bzip2的支持进行压缩/解压缩<br> -z ：通过gzip的支持进行压缩/解压缩<br> -v ：在压缩/解压缩过程中，将正在处理的文件名显示出来<br> -f filename ：filename为要处理的文件<br> -C dir ：指定压缩/解压缩的目录dir</p>
+<hr>
+<h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>dpkg –list　查看已安装软件<br>sudo apt-get –purge remove 包名　卸载软件　（–purge是可选项，写上这个属性是将软件及其配置文件一并删除，如不需要删除配置文件，可执行sudo apt-get remove 包名）</p>
 
       
       <!-- reward -->
@@ -202,14 +229,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%9F%BA%E7%A1%80/" rel="tag">Linux基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
 
 
     </footer>
@@ -220,19 +247,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+      <a href="/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            常见的Linux命令(一)--文件命令
+            字符串的最大公因子
           
         </div>
       </a>
     
     
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/" class="article-nav-link">
+      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">图像的加噪与去噪</div>
+        <div class="article-nav-title">图像直方图均衡化及规定化</div>
       </a>
     
   </nav>

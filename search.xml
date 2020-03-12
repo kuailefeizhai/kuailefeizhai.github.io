@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>字符串的最大公因子</title>
+    <url>/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/greatest-common-divisor-of-strings/" target="_blank" rel="noopener">原题链接</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>先用<a href="https://baike.baidu.com/item/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/1647675?fromtitle=%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95&fromid=4625352&fr=aladdin" target="_blank" rel="noopener">辗转相除法</a>求出字符串长度的最大公因子，<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">  while a !&#x3D; 0:</span><br><span class="line">      a, b &#x3D; b % a, a </span><br><span class="line">  return b</span><br></pre></td></tr></table></figure>
+然后我发现原来python的math里本来就有gcd函数。。。</li>
+<li>判断两个字符串正反相加是否相等<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>import math
+class Solution:
+  def gcdOfStrings(self, str1: str, str2: str) -&gt; str:
+      ans_len = math.gcd(len(str1),len( str2))
+      ans = str1[: ans_len]
+      if str1 + str2 == str2 + str1:
+          return ans
+      return &quot;&quot;</code></pre><h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3></li>
+<li>时间复杂度：字符串的拼接比较需要$O(n)$，最大公因子的计算需要$O(log n)$，总时间复杂度为$O(n)$</li>
+<li>空间复杂度：$O(n)$来存放$str1+str2$</li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
+        <tag>辗转相除法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>常见的Linux命令(一)--文件命令</title>
+    <url>/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><ul>
+<li>命名英文原意：list</li>
+<li>功能：显示目录文件</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-a, –all            不隐藏任何以. 开始的项目<br>-A, –almost-all        列出除. 及.. 以外的任何项目<br>–author            与-l 同时使用时列出每个文件的作者<br>-b, –escape            以八进制溢出序列表示不可打印的字符<br> -l                使用较长格式列出信息<br>  -r, –reverse            逆序排列<br>  -R, –recursive        递归显示子目录<br>  -s, –size            以块数形式显示每个文件分配的尺寸<br>  -g                类似-l，但不列出所有者</p>
+<a id="more"></a>
+<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><ul>
+<li>命名英文原意：print working directory</li>
+<li>功能：显示当前所在的工作目录</li>
+</ul>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><ul>
+<li>命名英文原意：change directory</li>
+<li>功能：切换目录</li>
+</ul>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><ul>
+<li>命名英文原意：make directory</li>
+<li>功能：创建新目录</li>
+</ul>
+<h4 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h4><ul>
+<li>命名英文原意：remove directory</li>
+<li>功能：删除空目录</li>
+</ul>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><ul>
+<li>命令英文原意：concatenate and display files</li>
+<li>功能：连接文件并打印到标准输出设备上</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-E 在每一行的末尾显示$<br>-n 为显示行添加行号</p>
+<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><ul>
+<li>功能：分页显示文件内容</li>
+</ul>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><ul>
+<li>功能：复制文件到某一处</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp [参数] &lt;源文件路径&gt; &lt;目标文件路径&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-p ：连同文件的属性一起复制，而非使用默认方式，常用于备份<br>-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行<br>-r ：递归持续复制，用于目录的复制行为<br>-u ：目标文件与源文件有差异时才会复制</p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><ul>
+<li>功能：删除文件或目录</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm [参数] &lt;目标文件路径&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-f ：就是force的意思，忽略不存在的文件，不会出现警告消息<br>-i ：互动模式，在删除前会询问用户是否操作<br>-r ：递归删除，最常用于目录删除，它是一个非常危险的参数</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><ul>
+<li>功能：用来寻找文件或目录</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find 路径 [参数]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-name filename ：找出文件名为filename的文件<br>-size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件<br>-tpye TYPE ：查找文件的类型为TYPE的文件，TYPE的值主要有：一般文件（f)、设备文件（b、c）、目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p）；<br>-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；</p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><ul>
+<li>功能：在文件中搜索匹配的字符并进行输出</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep[参数] &lt;要找的字串&gt; &lt;要寻找字串的源文件&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><ul>
+<li>功能：能够将用户所指定的文件或目录打包成一个文件，也可以通过指定参数开启压缩/解压缩功能</li>
+<li>用法：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar [参数] &lt;文件&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>-c ：新建打包文件<br> -t ：查看打包文件的内容含有哪些文件名<br> -x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同<br>一条命令中<br> -j ：通过bzip2的支持进行压缩/解压缩<br> -z ：通过gzip的支持进行压缩/解压缩<br> -v ：在压缩/解压缩过程中，将正在处理的文件名显示出来<br> -f filename ：filename为要处理的文件<br> -C dir ：指定压缩/解压缩的目录dir</p>
+<hr>
+<h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>dpkg –list　查看已安装软件<br>sudo apt-get –purge remove 包名　卸载软件　（–purge是可选项，写上这个属性是将软件及其配置文件一并删除，如不需要删除配置文件，可执行sudo apt-get remove 包名）</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图像直方图均衡化及规定化</title>
     <url>/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/</url>
     <content><![CDATA[<blockquote>

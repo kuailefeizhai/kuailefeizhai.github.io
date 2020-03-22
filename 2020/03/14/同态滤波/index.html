@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    图像的加噪与去噪 |  HA
+    同态滤波 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-图像的加噪与去噪" class="article article-type-post" itemscope
+  <article id="post-同态滤波" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  图像的加噪与去噪
+  同态滤波
 </h1>
   
 
@@ -49,8 +49,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/" class="article-date">
-  <time datetime="2020-03-03T08:13:48.000Z" itemprop="datePublished">2020-03-03</time>
+      <a href="/2020/03/14/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" class="article-date">
+  <time datetime="2020-03-14T07:40:09.000Z" itemprop="datePublished">2020-03-14</time>
 </a>
       
   <div class="article-category">
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">628字</span>
+            <span class="post-count">261字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -100,71 +100,15 @@
       
 
       
-      <blockquote>
-<h3 id="实验原图"><a href="#实验原图" class="headerlink" title="实验原图"></a>实验原图</h3><img src="/image/Fig2.jpg">
-</blockquote>
-<blockquote>
-<h3 id="以高斯噪声为例加噪去噪"><a href="#以高斯噪声为例加噪去噪" class="headerlink" title="以高斯噪声为例加噪去噪"></a>以高斯噪声为例加噪去噪</h3><p>matlab自带的加噪函数imnoise</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; imnoise(f1,&#39;gaussian&#39;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<blockquote>
-<p>噪声图像<br><img src="/image/result5.png"></p>
-</blockquote>
-</blockquote>
+      <h3 id="作频谱图"><a href="#作频谱图" class="headerlink" title="作频谱图"></a>作频谱图</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig4.jpg&#39;);</span><br><span class="line">%二维傅里叶变换</span><br><span class="line">Y &#x3D; fft2(f);</span><br><span class="line">%频谱偏移</span><br><span class="line">y1 &#x3D; abs(fftshift(Y));</span><br><span class="line">%归一化处理</span><br><span class="line">g &#x3D; (y1 - min(min(y1)))&#x2F;(max(max(y1))-min(min(y1)))*255;</span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imshow(g),title(&#39;频谱图&#39;)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<blockquote>
-<h4 id="高斯滤波"><a href="#高斯滤波" class="headerlink" title="高斯滤波"></a>高斯滤波</h4></blockquote>
-<ol>
-<li><p>就嗯算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dSigma &#x3D;0.8;</span><br><span class="line">fK1&#x3D;1.0&#x2F;(2*dSigma*dSigma);</span><br><span class="line">fK2&#x3D;fK1&#x2F;pi;</span><br><span class="line">iSize &#x3D; 3;</span><br><span class="line">step &#x3D; floor(iSize&#x2F;2 + 0.5);</span><br><span class="line">for i &#x3D; 1 : iSize</span><br><span class="line">    x&#x3D;i-step;</span><br><span class="line">    fTemp&#x3D;fK2*exp(-x*x*fK1);</span><br><span class="line">    for j &#x3D; 1 : iSize</span><br><span class="line">        y&#x3D;j-step;</span><br><span class="line">        model(x+step,y+step)&#x3D;fTemp*exp(-y*y*fK1);</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">dSum &#x3D; sum(sum(model));</span><br><span class="line">model &#x3D; model&#x2F;dSum;                     %Gauss核数值归一化</span><br></pre></td></tr></table></figure>
-<p>得到方差0.8的3*3的高斯滤波矩阵</p>
-</li>
-<li><p>见<a href="https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补" target="_blank" rel="noopener">https://www.cnblogs.com/MCSFX/p/11721065.html，有空再补</a></p>
-<blockquote>
-<h4 id="滤波处理"><a href="#滤波处理" class="headerlink" title="滤波处理"></a>滤波处理</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">g_copy &#x3D; g;</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 1:row</span><br><span class="line">    for j &#x3D; 1:cloumn</span><br><span class="line">        if i &gt; 1 &amp;&amp; j &gt; 1 &amp;&amp; i &lt; row &amp;&amp; j&lt;cloumn</span><br><span class="line">            result(i,j) &#x3D; model(1,1)*g_copy(i-1,j-1) +model(2,1)*g_copy(i,j-1) +model(1,3)*g_copy(i-1,j+1) +model(2,1)*g_copy(i,j-1) +model(3,1)*g_copy(i+1,j-1) +model(3,2)*g_copy(i+1,j) +model(3,3)*g_copy(i+1,j+1) +model(1,2)*g_copy(i-1,j)+model(2,2)*g_copy(i,j) ;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result6.png">
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<h4 id="均值滤波"><a href="#均值滤波" class="headerlink" title="均值滤波"></a>均值滤波</h4><p>这里用能减少边缘影响的半邻域均值滤波，不过这幅图没什么边缘看不出来效果<br>具体算法参看下图<br><img src="/image/reason1.png"></p>
-</blockquote>
-<ul>
-<li>代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(g);</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 2:row-1</span><br><span class="line">    for j &#x3D; 2:cloumn -1</span><br><span class="line">        model &#x3D; sort([h(i-1,j-1),h(i-1,j),h(i-1,j+1),h(i,j-1),h(i,j+1),h(i+1,j-1),h(i+1,j),h(i+1,j+1)]);</span><br><span class="line">        for z&#x3D;1:8</span><br><span class="line">            model(z) &#x3D; uint16(model(z));</span><br><span class="line">        end</span><br><span class="line">        m3 &#x3D; (model(1)+model(2)+model(3))&#x2F;3;</span><br><span class="line">        m6 &#x3D; (model(4)+model(5)+model(6)+model(7)+model(8)+h(i,j))&#x2F;6;</span><br><span class="line">        if abs(m3-m6)&lt;&#x3D;5</span><br><span class="line">            result(i,j) &#x3D; (sum(model)+h(i,j))&#x2F;9;</span><br><span class="line">        else </span><br><span class="line">            result(i,j) &#x3D; m6;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果：-1"><a href="#运行结果：-1" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result7.png">
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<h4 id="中值滤波"><a href="#中值滤波" class="headerlink" title="中值滤波"></a>中值滤波</h4><p>这个简单，直接取中位数就行，这里用了3*3邻域的中值</p>
-</blockquote>
-<ul>
-<li>代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">h &#x3D; uint16(g);</span><br><span class="line">result &#x3D; g;</span><br><span class="line">for i &#x3D; 2:row-1</span><br><span class="line">    for j &#x3D; 2:cloumn -1</span><br><span class="line">        model &#x3D; sort([h(i-1,j-1),h(i-1,j),h(i-1,j+1),h(i,j-1),h(i,j+1),h(i+1,j-1),h(i+1,j),h(i+1,j+1)]);</span><br><span class="line">        result(i,j) &#x3D; model(5);</span><br><span class="line">    end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="运行结果：-2"><a href="#运行结果：-2" class="headerlink" title="运行结果："></a>运行结果：</h4><img src="/image/result8.png">
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<h3 id="对比一下椒盐噪声下的三种滤波效果"><a href="#对比一下椒盐噪声下的三种滤波效果" class="headerlink" title="对比一下椒盐噪声下的三种滤波效果"></a>对比一下椒盐噪声下的三种滤波效果</h3><h4 id="先看加噪后的图"><a href="#先看加噪后的图" class="headerlink" title="先看加噪后的图"></a>先看加噪后的图</h4><img src="/image/result9.png">
-</blockquote>
-<blockquote>
-<h4 id="高斯滤波后的图"><a href="#高斯滤波后的图" class="headerlink" title="高斯滤波后的图"></a>高斯滤波后的图</h4><img src="/image/result10.png">
-</blockquote>
-<blockquote>
-<h4 id="均值滤波后的图"><a href="#均值滤波后的图" class="headerlink" title="均值滤波后的图"></a>均值滤波后的图</h4><img src="/image/result11.png">
-</blockquote>
-<blockquote>
-<h4 id="中值滤波后的图"><a href="#中值滤波后的图" class="headerlink" title="中值滤波后的图"></a>中值滤波后的图</h4><img src="/image/result12.png">
-对于椒盐噪声来说似乎中值滤波的效果最好
-</blockquote>
-<hr>
-<p>好像每种噪声都是高斯滤波最差，不知道是不是我设计的问题qaq</p>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><img src="/image/result13.png">
 
+<h3 id="同态滤波"><a href="#同态滤波" class="headerlink" title="同态滤波"></a>同态滤波</h3><p><a href="http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/OWENS/LECT5/node4.html" target="_blank" rel="noopener">滤波原理</a></p>
+<h4 id="算法说明"><a href="#算法说明" class="headerlink" title="算法说明"></a>算法说明</h4><p>先对原函数取对数，做傅里叶变换后通过如下滤波器：<br><img src="/image/formula1.png"></p>
+<p>再做逆变换取指数。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; rgb2gray(imread(&#39;fig6.jpg&#39;));</span><br><span class="line">[row, cloumn] &#x3D; size(f);</span><br><span class="line">g &#x3D; log(im2double(f)*255+1);</span><br><span class="line">%二维傅里叶变换</span><br><span class="line">Y &#x3D; fft2(g); </span><br><span class="line">rL&#x3D;0.2;    </span><br><span class="line">rH&#x3D;0.5;</span><br><span class="line">c&#x3D;2;    </span><br><span class="line">d0&#x3D;80;  </span><br><span class="line">n1&#x3D;floor(row&#x2F;2);    </span><br><span class="line">n2&#x3D;floor(cloumn&#x2F;2);    </span><br><span class="line">for i&#x3D;1:row    </span><br><span class="line">    for j&#x3D;1:cloumn    </span><br><span class="line">        D(i,j)&#x3D;((i-n1).^2+(j-n2).^2);    </span><br><span class="line">        H(i,j)&#x3D;(rH-rL).*(1-exp(c.*(-D(i,j).&#x2F;(d0^2))))+rL; </span><br><span class="line">    end    </span><br><span class="line">end    </span><br><span class="line"></span><br><span class="line">I2&#x3D;real(ifft2(H.*Y)); </span><br><span class="line">I3&#x3D;exp(I2)-1; </span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imshow(I3,[]),title(&#39;同态滤波后图&#39;)</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h4><img src="/image/result14.png">
       
       <!-- reward -->
       
@@ -233,14 +177,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/14/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%91%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%A4%84%E7%90%86/" rel="tag">频域上的处理</a></li></ul>
 
 
     </footer>
@@ -251,19 +195,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" class="article-nav-link">
+      <a href="/2020/03/15/%E7%AC%AC180%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            图像直方图均衡化及规定化
+            第180场周赛
           
         </div>
       </a>
     
     
-      <a href="/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/" class="article-nav-link">
+      <a href="/2020/03/14/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">柱状图中最大的矩形</div>
+        <div class="article-nav-title">最长上升子序列</div>
       </a>
     
   </nav>

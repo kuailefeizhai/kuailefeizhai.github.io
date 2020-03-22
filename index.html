@@ -69,6 +69,241 @@
     
     
     
+    <article id="post-第181场周赛" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/"
+    >第181场周赛</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="article-date">
+  <time datetime="2020-03-22T05:33:13.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/create-target-array-in-the-given-order/" target="_blank" rel="noopener">按既定顺序创建目标数组</a><br>送分题，就嗯加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def createTargetArray(self, nums: List[int], index: List[int]) -&gt; List[int]:</span><br><span class="line">        target &#x3D; []</span><br><span class="line">        for i in range(0, len(nums)):</span><br><span class="line">            target &#x3D; target[0:index[i]] + [nums[i]] + target[index[i]:len(target)]</span><br><span class="line">        return target</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode-cn.com/problems/four-divisors/" target="_blank" rel="noopener">四因数</a><br>没什么好说的</p>
+      
+      <a class="article-more-link" href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-第180场周赛" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/15/%E7%AC%AC180%E5%9C%BA%E5%91%A8%E8%B5%9B/"
+    >第180场周赛</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/15/%E7%AC%AC180%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="article-date">
+  <time datetime="2020-03-15T10:54:10.000Z" itemprop="datePublished">2020-03-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/lucky-numbers-in-a-matrix/" target="_blank" rel="noopener">矩阵中的幸运数</a><br>没事做来第一次尝试周赛题，此题感觉似曾相识，直接嗯算AC了，时间复杂度$O(n^2)$，改进空间还挺大，$O(n^2)$的循环用了两次，空间占用也挺多。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def luckyNumbers (self, matrix: List[List[int]]) -&gt; List[int]:</span><br><span class="line">        m &#x3D; len(matrix)</span><br><span class="line">        if m &#x3D;&#x3D; 0:</span><br><span class="line">            return []</span><br><span class="line">        n &#x3D; len(matrix[0])</span><br><span class="line">        output &#x3D; []</span><br><span class="line">        min_val &#x3D; []</span><br><span class="line">        min_col &#x3D; []</span><br><span class="line">        for row in matrix:</span><br><span class="line">            temp_val &#x3D; row[0]</span><br><span class="line">            temp_col &#x3D; 0</span><br><span class="line">            for i in range(0, n):</span><br><span class="line">                if row[i] &lt; temp_val:</span><br><span class="line">                    temp_val &#x3D; row[i]</span><br><span class="line">                    temp_col &#x3D; i</span><br><span class="line">            min_val.append(temp_val)</span><br><span class="line">            min_col.append(temp_col)</span><br><span class="line">        while min_col:</span><br><span class="line">            col &#x3D; min_col.pop()</span><br><span class="line">            val &#x3D; min_val.pop()</span><br><span class="line">            flag &#x3D; 1</span><br><span class="line">            for row in matrix:</span><br><span class="line">                if row[col] &gt; val:</span><br><span class="line">                    flag &#x3D; 0</span><br><span class="line">                    break </span><br><span class="line">            if flag:</span><br><span class="line">                output.append(val)</span><br><span class="line">        return output</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode-cn.com/problems/design-a-stack-with-increment-operation/" target="_blank" rel="noopener"> 设计一个支持增量操作的栈</a><br>关键在于增量的实现：将增量值记录在第k个元素上而不是每次新增都遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class CustomStack:</span><br><span class="line"></span><br><span class="line">    def __init__(self, maxSize: int):</span><br><span class="line">        self.s &#x3D; []</span><br><span class="line">        self.size &#x3D; 0</span><br><span class="line">        self.maxSize &#x3D; maxSize</span><br><span class="line"></span><br><span class="line">    def push(self, x: int) -&gt; None:</span><br><span class="line">        if self.size &lt; self.maxSize:</span><br><span class="line">            self.size +&#x3D; 1</span><br><span class="line">            self.s.append([x, 0])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def pop(self) -&gt; int:</span><br><span class="line">        if self.size &gt; 0:</span><br><span class="line">            self.size -&#x3D; 1</span><br><span class="line">            x, inc &#x3D; self.s.pop()</span><br><span class="line">            if self.size &gt; 0:</span><br><span class="line">                self.s[-1][1] +&#x3D; inc</span><br><span class="line">            return x + inc</span><br><span class="line">        else:</span><br><span class="line">            return -1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def increment(self, k: int, val: int) -&gt; None:</span><br><span class="line">        if self.size &gt; 0:</span><br><span class="line">            k &#x3D; min(k - 1, self.size - 1)</span><br><span class="line">            self.s[k][1] +&#x3D; val</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://leetcode-cn.com/problems/balance-a-binary-search-tree/" target="_blank" rel="noopener">将二叉搜索树变平衡</a><br>经典数据结构题，有空补。</p>
+<p><a href="https://leetcode-cn.com/problems/maximum-performance-of-a-team/" target="_blank" rel="noopener">最大的团队表现值</a><br>似乎有点难，有空补。</p>
+<blockquote>
+<p> 前三题都挺基础的，以后每周都可以做一下，当个目标。</p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-同态滤波" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/14/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/"
+    >同态滤波</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/14/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/" class="article-date">
+  <time datetime="2020-03-14T07:40:09.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="作频谱图"><a href="#作频谱图" class="headerlink" title="作频谱图"></a>作频谱图</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig4.jpg&#39;);</span><br><span class="line">%二维傅里叶变换</span><br><span class="line">Y &#x3D; fft2(f);</span><br><span class="line">%频谱偏移</span><br><span class="line">y1 &#x3D; abs(fftshift(Y));</span><br><span class="line">%归一化处理</span><br><span class="line">g &#x3D; (y1 - min(min(y1)))&#x2F;(max(max(y1))-min(min(y1)))*255;</span><br><span class="line">subplot(2,1,1);imshow(f),title(&#39;原图像&#39;);</span><br><span class="line">subplot(2,1,2);imshow(g),title(&#39;频谱图&#39;)</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/03/14/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%91%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%A4%84%E7%90%86/" rel="tag">频域上的处理</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-最长上升子序列" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -419,7 +654,7 @@ class Solution:
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
   </div>
 
       
@@ -463,7 +698,7 @@ class Solution:
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
 
 
     </footer>
@@ -504,7 +739,7 @@ class Solution:
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
   </div>
 
       
@@ -549,7 +784,7 @@ class Solution:
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
 
 
     </footer>
@@ -640,249 +875,6 @@ class Solution:
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-接雨水" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"
-    >接雨水</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="article-date">
-  <time datetime="2020-02-27T11:52:10.000Z" itemprop="datePublished">2020-02-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">原题链接</a></p>
-<blockquote>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4></blockquote>
-<h5 id="双指针法："><a href="#双指针法：" class="headerlink" title="双指针法："></a>双指针法：</h5><ol>
-<li>先找出最高的墙heightest;</li>
-<li>从左往右加到最高的墙，每次更新左边最高的墙temp；</li>
-<li>同理再从右往左加到最高的墙。</li>
-</ol>
-<blockquote>
-<h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def trap(self, height: List[int]) -&gt; int:</span><br><span class="line">        if len(height) &lt;&#x3D; 1:</span><br><span class="line">            return 0 </span><br><span class="line">        heightest &#x3D; height[0]</span><br><span class="line">        index &#x3D; 0</span><br><span class="line">        for i in range(1, len(height)):</span><br><span class="line">            if height[i] &gt; heightest:</span><br><span class="line">                index &#x3D; i</span><br><span class="line">                heightest &#x3D; height[i]</span><br><span class="line">        area &#x3D; 0</span><br><span class="line">        temp &#x3D; 0</span><br><span class="line">        for i in range(index):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        temp &#x3D; height[-1]</span><br><span class="line">        for i in reversed(range(index+1, len(height))):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        return area</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4></blockquote>
-<ul>
-<li>时间复杂度：遍历找出最高的墙$O(n)$;从左带最高和从右到最高加起来$O(n)$;所以总共的复杂度$O(n)$；</li>
-<li>空间复杂度：只用了temp和heightest存数，$O(1)$。</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-像素的4连接、8连接和m连接" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/"
-    >像素的4连接、8连接和m连接</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/" class="article-date">
-  <time datetime="2020-02-25T07:19:22.000Z" itemprop="datePublished">2020-02-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <blockquote>
-<h3 id="相邻像素"><a href="#相邻像素" class="headerlink" title="相邻像素"></a>相邻像素</h3><p>位于坐标$(x,y)$处的像素p有4个水平和垂直的相邻像素，其坐标由下式给出：<br>$(x+1,y),(x-1,y),(x,y+1),(x,y-1)$<br>这组像素称为$p$的4邻域，用$N_4(p)$表示。<br>$p$的4个对角相邻像素的坐标如下：<br>$(x+1,y+1),(x-1,y-1),(x+1,y+1),(x-1,y-1)$<br>并用$N_D(p)$表示。这些点与上面4个邻点一起称为p的8邻域，用$N_8(p)$表示。</p>
-<h3 id="三种连接"><a href="#三种连接" class="headerlink" title="三种连接"></a>三种连接</h3></blockquote>
-      
-      <a class="article-more-link" href="/2020/02/25/%E5%83%8F%E7%B4%A0%E7%9A%844%E8%BF%9E%E6%8E%A5%E3%80%818%E8%BF%9E%E6%8E%A5%E5%92%8Cm%E8%BF%9E%E6%8E%A5/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-Bmp格式的存储方式" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/"
-    >Bmp格式的存储方式</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/" class="article-date">
-  <time datetime="2020-02-23T15:08:54.000Z" itemprop="datePublished">2020-02-23</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h3 id="格式分析"><a href="#格式分析" class="headerlink" title="格式分析"></a>格式分析</h3><blockquote>
-<h4 id="格式简介"><a href="#格式简介" class="headerlink" title="格式简介"></a>格式简介</h4><p>BMP是英文Bitmap（位图）的简写，它是Windows操作系统中的标准图像文件格式，在Windows环境下运行的所有图象处理软件都支持BMP图象文件格式。Windows 3.0以前的BMP图文件格式与显示设备有关，因此把这种BMP图象文件格式称为设备相关位图DDB(device-dependent bitmap）文件格式。这种格式的特点是包含的图像信息较丰富，几乎不进行压缩，但由此导致了它与生俱生来的缺点–占用磁盘空间过大。所以，目前BMP在单机上比较流行。</p>
-<h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4></blockquote>
-      
-      <a class="article-more-link" href="/2020/02/23/Bmp%E6%A0%BC%E5%BC%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">数字图像处理</a></li></ul>
 
 
     </footer>

@@ -190,17 +190,9 @@
 
       
       <p><a href="https://leetcode-cn.com/problems/lucky-numbers-in-a-matrix/" target="_blank" rel="noopener">矩阵中的幸运数</a><br>没事做来第一次尝试周赛题，此题感觉似曾相识，直接嗯算AC了，时间复杂度$O(n^2)$，改进空间还挺大，$O(n^2)$的循环用了两次，空间占用也挺多。</p>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def luckyNumbers (self, matrix: List[List[int]]) -&gt; List[int]:</span><br><span class="line">        m &#x3D; len(matrix)</span><br><span class="line">        if m &#x3D;&#x3D; 0:</span><br><span class="line">            return []</span><br><span class="line">        n &#x3D; len(matrix[0])</span><br><span class="line">        output &#x3D; []</span><br><span class="line">        min_val &#x3D; []</span><br><span class="line">        min_col &#x3D; []</span><br><span class="line">        for row in matrix:</span><br><span class="line">            temp_val &#x3D; row[0]</span><br><span class="line">            temp_col &#x3D; 0</span><br><span class="line">            for i in range(0, n):</span><br><span class="line">                if row[i] &lt; temp_val:</span><br><span class="line">                    temp_val &#x3D; row[i]</span><br><span class="line">                    temp_col &#x3D; i</span><br><span class="line">            min_val.append(temp_val)</span><br><span class="line">            min_col.append(temp_col)</span><br><span class="line">        while min_col:</span><br><span class="line">            col &#x3D; min_col.pop()</span><br><span class="line">            val &#x3D; min_val.pop()</span><br><span class="line">            flag &#x3D; 1</span><br><span class="line">            for row in matrix:</span><br><span class="line">                if row[col] &gt; val:</span><br><span class="line">                    flag &#x3D; 0</span><br><span class="line">                    break </span><br><span class="line">            if flag:</span><br><span class="line">                output.append(val)</span><br><span class="line">        return output</span><br></pre></td></tr></table></figure>
-<p><a href="https://leetcode-cn.com/problems/design-a-stack-with-increment-operation/" target="_blank" rel="noopener"> 设计一个支持增量操作的栈</a><br>关键在于增量的实现：将增量值记录在第k个元素上而不是每次新增都遍历。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class CustomStack:</span><br><span class="line"></span><br><span class="line">    def __init__(self, maxSize: int):</span><br><span class="line">        self.s &#x3D; []</span><br><span class="line">        self.size &#x3D; 0</span><br><span class="line">        self.maxSize &#x3D; maxSize</span><br><span class="line"></span><br><span class="line">    def push(self, x: int) -&gt; None:</span><br><span class="line">        if self.size &lt; self.maxSize:</span><br><span class="line">            self.size +&#x3D; 1</span><br><span class="line">            self.s.append([x, 0])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def pop(self) -&gt; int:</span><br><span class="line">        if self.size &gt; 0:</span><br><span class="line">            self.size -&#x3D; 1</span><br><span class="line">            x, inc &#x3D; self.s.pop()</span><br><span class="line">            if self.size &gt; 0:</span><br><span class="line">                self.s[-1][1] +&#x3D; inc</span><br><span class="line">            return x + inc</span><br><span class="line">        else:</span><br><span class="line">            return -1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def increment(self, k: int, val: int) -&gt; None:</span><br><span class="line">        if self.size &gt; 0:</span><br><span class="line">            k &#x3D; min(k - 1, self.size - 1)</span><br><span class="line">            self.s[k][1] +&#x3D; val</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://leetcode-cn.com/problems/balance-a-binary-search-tree/" target="_blank" rel="noopener">将二叉搜索树变平衡</a><br>经典数据结构题，有空补。</p>
-<p><a href="https://leetcode-cn.com/problems/maximum-performance-of-a-team/" target="_blank" rel="noopener">最大的团队表现值</a><br>似乎有点难，有空补。</p>
-<blockquote>
-<p> 前三题都挺基础的，以后每周都可以做一下，当个目标。</p>
-</blockquote>
-
+      
+      <a class="article-more-link" href="/2020/03/15/%E7%AC%AC180%E5%9C%BA%E5%91%A8%E8%B5%9B/">阅读更多...</a>
+      
       
       <!-- reward -->
       
@@ -574,7 +566,7 @@ class Solution:
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
   </div>
 
       
@@ -613,7 +605,7 @@ class Solution:
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%9F%BA%E7%A1%80/" rel="tag">Linux基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%9F%BA%E7%A1%80/" rel="tag">Linux基础</a></li></ul>
 
 
     </footer>

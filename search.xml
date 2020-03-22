@@ -25,6 +25,7 @@
     <title>第180场周赛</title>
     <url>/2020/03/15/%E7%AC%AC180%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/lucky-numbers-in-a-matrix/" target="_blank" rel="noopener">矩阵中的幸运数</a><br>没事做来第一次尝试周赛题，此题感觉似曾相识，直接嗯算AC了，时间复杂度$O(n^2)$，改进空间还挺大，$O(n^2)$的循环用了两次，空间占用也挺多。</p>
+<a id="more"></a>
 <hr>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def luckyNumbers (self, matrix: List[List[int]]) -&gt; List[int]:</span><br><span class="line">        m &#x3D; len(matrix)</span><br><span class="line">        if m &#x3D;&#x3D; 0:</span><br><span class="line">            return []</span><br><span class="line">        n &#x3D; len(matrix[0])</span><br><span class="line">        output &#x3D; []</span><br><span class="line">        min_val &#x3D; []</span><br><span class="line">        min_col &#x3D; []</span><br><span class="line">        for row in matrix:</span><br><span class="line">            temp_val &#x3D; row[0]</span><br><span class="line">            temp_col &#x3D; 0</span><br><span class="line">            for i in range(0, n):</span><br><span class="line">                if row[i] &lt; temp_val:</span><br><span class="line">                    temp_val &#x3D; row[i]</span><br><span class="line">                    temp_col &#x3D; i</span><br><span class="line">            min_val.append(temp_val)</span><br><span class="line">            min_col.append(temp_col)</span><br><span class="line">        while min_col:</span><br><span class="line">            col &#x3D; min_col.pop()</span><br><span class="line">            val &#x3D; min_val.pop()</span><br><span class="line">            flag &#x3D; 1</span><br><span class="line">            for row in matrix:</span><br><span class="line">                if row[col] &gt; val:</span><br><span class="line">                    flag &#x3D; 0</span><br><span class="line">                    break </span><br><span class="line">            if flag:</span><br><span class="line">                output.append(val)</span><br><span class="line">        return output</span><br></pre></td></tr></table></figure>
 <p><a href="https://leetcode-cn.com/problems/design-a-stack-with-increment-operation/" target="_blank" rel="noopener"> 设计一个支持增量操作的栈</a><br>关键在于增量的实现：将增量值记录在第k个元素上而不是每次新增都遍历。</p>
@@ -195,11 +196,10 @@ class Solution:
 <h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>dpkg –list　查看已安装软件<br>sudo apt-get –purge remove 包名　卸载软件　（–purge是可选项，写上这个属性是将软件及其配置文件一并删除，如不需要删除配置文件，可执行sudo apt-get remove 包名）</p>
 ]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>操作系统</category>
       </categories>
       <tags>
         <tag>Linux基础</tag>
-        <tag>操作系统</tag>
       </tags>
   </entry>
   <entry>

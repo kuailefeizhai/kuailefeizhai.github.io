@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-22T07:51:42.283Z</updated>
+  <updated>2020-04-02T15:06:08.784Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,101 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>创建进程、线程</title>
+    <link href="http://yoursite.com/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://yoursite.com/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/</id>
+    <published>2020-04-02T07:33:37.000Z</published>
+    <updated>2020-04-02T15:06:08.784Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Windows&quot;&gt;&lt;a href=&quot;#Windows&quot; class=&quot;headerlink&quot; title=&quot;Windows&quot;&gt;&lt;/a&gt;Windows&lt;/h3&gt;&lt;h4 id=&quot;Windows下创建进程&quot;&gt;&lt;a href=&quot;#Windows下创建进程&quot; class=&quot;headerlink&quot; title=&quot;Windows下创建进程&quot;&gt;&lt;/a&gt;Windows下创建进程&lt;/h4&gt;&lt;p&gt;CreateProcess函数的具体参数：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;BOOL CreateProcess(  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPCTSTR lpApplicationName, &amp;#x2F;&amp;#x2F; 应用程序名称  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPTSTR lpCommandLine, &amp;#x2F;&amp;#x2F; 命令行字符串  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPSECURITY_ATTRIBUTES lpProcessAttributes, &amp;#x2F;&amp;#x2F; 进程的安全属性  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPSECURITY_ATTRIBUTES lpThreadAttributes, &amp;#x2F;&amp;#x2F; 线程的安全属性  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　BOOL bInheritHandles, &amp;#x2F;&amp;#x2F; 是否继承父进程的属性  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　DWORD dwCreationFlags, &amp;#x2F;&amp;#x2F; 创建标志  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPVOID lpEnvironment, &amp;#x2F;&amp;#x2F; 指向新的环境块的指针  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPCTSTR lpCurrentDirectory, &amp;#x2F;&amp;#x2F; 指向当前目录名的指针  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPSTARTUPINFO lpStartupInfo, &amp;#x2F;&amp;#x2F; 传递给新进程的信息  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;　LPPROCESS_INFORMATION lpProcessInformation &amp;#x2F;&amp;#x2F; 新进程返回的信息  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="进程控制" scheme="http://yoursite.com/tags/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
+    
+      <category term="线程控制" scheme="http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卡牌分组</title>
+    <link href="http://yoursite.com/2020/03/28/%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/"/>
+    <id>http://yoursite.com/2020/03/28/%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/</id>
+    <published>2020-03-27T16:10:37.000Z</published>
+    <updated>2020-03-27T16:29:03.518Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/qia-pai-fen-zu-by-leetcode-solution/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="leetcode刷题" scheme="http://yoursite.com/categories/leetcode%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="最大公约数" scheme="http://yoursite.com/tags/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>水壶问题（Die Hard）</title>
+    <link href="http://yoursite.com/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/</id>
+    <published>2020-03-24T15:04:16.000Z</published>
+    <updated>2020-03-24T16:58:59.883Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/water-and-jug-problem/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原题链接&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;深度优先搜索算法&lt;br&gt;用(remain_x,remain_y)记录当前状态，当所有状态都被遍历时就能得到结果。
+    
+    </summary>
+    
+    
+      <category term="leetcode刷题" scheme="http://yoursite.com/categories/leetcode%E5%88%B7%E9%A2%98/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>指纹识别处理（一）--预处理</title>
+    <link href="http://yoursite.com/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    <id>http://yoursite.com/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/</id>
+    <published>2020-03-24T10:56:35.000Z</published>
+    <updated>2020-03-24T15:02:58.213Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;图像的归一化&quot;&gt;&lt;a href=&quot;#图像的归一化&quot; class=&quot;headerlink&quot; title=&quot;图像的归一化&quot;&gt;&lt;/a&gt;图像的归一化&lt;/h4&gt;&lt;p&gt;指纹图像的归一化的目的是使得图像灰度值达到一个预先定义的平均值和方差，增强图像整体对比度。归一化处理能够有效地解决按压不均匀对采集到的指纹图像的影响。&lt;br&gt;$$&lt;br&gt;g(x,y) = \left{ \begin{array}{ll}&lt;br&gt;    m_0+\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp;amp; \textrm{if $g(x,y)\geq m$}\&lt;br&gt;    m_0-\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp;amp; \textrm{if $g(x,y)&amp;lt;m$}&lt;br&gt;    \end{array} \right.&lt;br&gt;$$&lt;br&gt;其中$m,v$分别为图像的均值和方差，$m_0,v_0$为指定的方差和均值&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="数字图像处理" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="指纹识别" scheme="http://yoursite.com/tags/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>WinDump抓包</title>

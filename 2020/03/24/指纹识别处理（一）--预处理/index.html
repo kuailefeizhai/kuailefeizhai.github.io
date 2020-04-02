@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    WinDump抓包 |  HA
+    指纹识别处理（一）--预处理 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-WinDump抓包" class="article article-type-post" itemscope
+  <article id="post-指纹识别处理（一）--预处理" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  WinDump抓包
+  指纹识别处理（一）--预处理
 </h1>
   
 
@@ -49,12 +49,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/03/22/WinDump%E6%8A%93%E5%8C%85/" class="article-date">
-  <time datetime="2020-03-22T07:35:24.000Z" itemprop="datePublished">2020-03-22</time>
+      <a href="/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2020-03-24T10:56:35.000Z" itemprop="datePublished">2020-03-24</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">网络信息安全</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
   </div>
 
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">131字</span>
+            <span class="post-count">288字</span>
         </span>
     </span>
 
@@ -100,27 +100,12 @@
       
 
       
-      <h3 id="安装WinDump"><a href="#安装WinDump" class="headerlink" title="安装WinDump"></a>安装WinDump</h3><ol>
-<li>请先安装WinPcap</li>
-<li>将windump置于某个目录下，比如D盘根目录。无需安装。</li>
-<li>可选：把windump所在目录添加到系统变量Path</li>
-<li>请打开命令行窗口，执行windump，即可体验抓包。请不要通过双击windump图标来启动windump</li>
-</ol>
-<h3 id="抓取对百度的请求"><a href="#抓取对百度的请求" class="headerlink" title="抓取对百度的请求"></a>抓取对百度的请求</h3><ol>
-<li><p>找到本机的网卡，使用WinDump -D指令（用管理员身份打开）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WinDump -D</span><br></pre></td></tr></table></figure>
+      <h4 id="图像的归一化"><a href="#图像的归一化" class="headerlink" title="图像的归一化"></a>图像的归一化</h4><p>指纹图像的归一化的目的是使得图像灰度值达到一个预先定义的平均值和方差，增强图像整体对比度。归一化处理能够有效地解决按压不均匀对采集到的指纹图像的影响。<br>$$<br>g(x,y) = \left{ \begin{array}{ll}<br>    m_0+\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)\geq m$}\<br>    m_0-\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)&lt;m$}<br>    \end{array} \right.<br>$$<br>其中$m,v$分别为图像的均值和方差，$m_0,v_0$为指定的方差和均值</p>
 <a id="more"></a>
-<img src="/image/operation1.png">
-</li>
-<li><p>指定网卡抓取icmp报文</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">windump -i 4 icmp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>另一终端中发送Ping请求</p>
-<img src="/image/operation2.png">
-</li>
-<li><p>抓取到包</p>
-<img src="/image/operation3.png"></li>
-</ol>
+<h5 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">image &#x3D; imread(&#39;F1.jpg&#39;);</span><br><span class="line">[row, cloumn] &#x3D; size(image);</span><br><span class="line">dimage &#x3D; double(image);</span><br><span class="line">mean &#x3D; mean(mean(dimage));</span><br><span class="line">sigma &#x3D; std2(dimage);</span><br><span class="line">m0 &#x3D; 100; %期望的均值</span><br><span class="line">s0 &#x3D; 2000; %期望的方差</span><br><span class="line">for x&#x3D;1:row</span><br><span class="line">    for y&#x3D;1:cloumn</span><br><span class="line">        if dimage(x,y)&gt; mean</span><br><span class="line">            dimage(x,y)&#x3D;m0+sqrt(s0*(dimage(x,y)-mean)&#x2F;sigma);</span><br><span class="line">        else</span><br><span class="line">            dimage(x,y)&#x3D;m0-sqrt(s0*(mean-dimage(x,y))&#x2F;sigma);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure,imshow(uint8(dimage))</span><br></pre></td></tr></table></figure>
+<h5 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h5><p>原图：<br><img src="/image/F1.png"><br>归一化后的图：<br><img src="/image/guiyi1.png"></p>
+<p>作频谱图可以发现被滤去的频率：<br><img src="/image/pinpu1.png"></p>
+<p>参考资料：<br>[1]<a href="https://wenku.baidu.com/view/9a30a721d5d8d15abe23482fb4daa58da0111c82.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/9a30a721d5d8d15abe23482fb4daa58da0111c82.html</a><br>[2]<a href="https://blog.csdn.net/MrCharles/article/details/79292496" target="_blank" rel="noopener">https://blog.csdn.net/MrCharles/article/details/79292496</a></p>
 
       
       <!-- reward -->
@@ -190,14 +175,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/22/WinDump%E6%8A%93%E5%8C%85/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/" rel="tag">网络抓包分析</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/" rel="tag">指纹识别</a></li></ul>
 
 
     </footer>
@@ -208,19 +193,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/" class="article-nav-link">
+      <a href="/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            指纹识别处理（一）--预处理
+            水壶问题（Die Hard）
           
         </div>
       </a>
     
     
-      <a href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="article-nav-link">
+      <a href="/2020/03/22/WinDump%E6%8A%93%E5%8C%85/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">第181场周赛</div>
+        <div class="article-nav-title">WinDump抓包</div>
       </a>
     
   </nav>

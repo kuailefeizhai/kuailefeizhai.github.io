@@ -69,6 +69,312 @@
     
     
     
+    <article id="post-创建进程、线程" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/"
+    >创建进程、线程</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2020-04-02T07:33:37.000Z" itemprop="datePublished">2020-04-02</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><h4 id="Windows下创建进程"><a href="#Windows下创建进程" class="headerlink" title="Windows下创建进程"></a>Windows下创建进程</h4><p>CreateProcess函数的具体参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">BOOL CreateProcess(  </span><br><span class="line">　LPCTSTR lpApplicationName, &#x2F;&#x2F; 应用程序名称  </span><br><span class="line">　LPTSTR lpCommandLine, &#x2F;&#x2F; 命令行字符串  </span><br><span class="line">　LPSECURITY_ATTRIBUTES lpProcessAttributes, &#x2F;&#x2F; 进程的安全属性  </span><br><span class="line">　LPSECURITY_ATTRIBUTES lpThreadAttributes, &#x2F;&#x2F; 线程的安全属性  </span><br><span class="line">　BOOL bInheritHandles, &#x2F;&#x2F; 是否继承父进程的属性  </span><br><span class="line">　DWORD dwCreationFlags, &#x2F;&#x2F; 创建标志  </span><br><span class="line">　LPVOID lpEnvironment, &#x2F;&#x2F; 指向新的环境块的指针  </span><br><span class="line">　LPCTSTR lpCurrentDirectory, &#x2F;&#x2F; 指向当前目录名的指针  </span><br><span class="line">　LPSTARTUPINFO lpStartupInfo, &#x2F;&#x2F; 传递给新进程的信息  </span><br><span class="line">　LPPROCESS_INFORMATION lpProcessInformation &#x2F;&#x2F; 新进程返回的信息  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6/" rel="tag">线程控制</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/" rel="tag">进程控制</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-卡牌分组" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/28/%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/"
+    >卡牌分组</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/28/%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/" class="article-date">
+  <time datetime="2020-03-27T16:10:37.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/qia-pai-fen-zu-by-leetcode-solution/" target="_blank" rel="noopener">原题链接</a><br>collections.Counter统计字符串（数字）种类及数量，返回字典；</p>
+<p>functools.reduce逐次对上次函数结果与当前序列元素应用函数；</p>
+<ul>
+<li>reduce(function, sequence)</li>
+<li>例如 reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) 计算为((((1+2)+3)+4)+5)</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/" rel="tag">最大公约数</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-水壶问题（Die-Hard）" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/"
+    >水壶问题（Die Hard）</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/" class="article-date">
+  <time datetime="2020-03-24T15:04:16.000Z" itemprop="datePublished">2020-03-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/water-and-jug-problem/" target="_blank" rel="noopener">原题链接</a></p>
+<ul>
+<li>深度优先搜索算法<br>用(remain_x,remain_y)记录当前状态，当所有状态都被遍历时就能得到结果。
+      
+      <a class="article-more-link" href="/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-指纹识别处理（一）--预处理" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/"
+    >指纹识别处理（一）--预处理</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2020-03-24T10:56:35.000Z" itemprop="datePublished">2020-03-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h4 id="图像的归一化"><a href="#图像的归一化" class="headerlink" title="图像的归一化"></a>图像的归一化</h4><p>指纹图像的归一化的目的是使得图像灰度值达到一个预先定义的平均值和方差，增强图像整体对比度。归一化处理能够有效地解决按压不均匀对采集到的指纹图像的影响。<br>$$<br>g(x,y) = \left{ \begin{array}{ll}<br>    m_0+\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)\geq m$}\<br>    m_0-\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)&lt;m$}<br>    \end{array} \right.<br>$$<br>其中$m,v$分别为图像的均值和方差，$m_0,v_0$为指定的方差和均值</p>
+      
+      <a class="article-more-link" href="/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/" rel="tag">指纹识别</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-WinDump抓包" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -522,344 +828,6 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-字符串的最大公因子" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/"
-    >字符串的最大公因子</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/12/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E5%9B%A0%E5%AD%90/" class="article-date">
-  <time datetime="2020-03-12T11:22:18.000Z" itemprop="datePublished">2020-03-12</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p><a href="https://leetcode-cn.com/problems/greatest-common-divisor-of-strings/" target="_blank" rel="noopener">原题链接</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>先用<a href="https://baike.baidu.com/item/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95/1647675?fromtitle=%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95&fromid=4625352&fr=aladdin" target="_blank" rel="noopener">辗转相除法</a>求出字符串长度的最大公因子，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def gcd(a, b):</span><br><span class="line">  while a !&#x3D; 0:</span><br><span class="line">      a, b &#x3D; b % a, a </span><br><span class="line">  return b</span><br></pre></td></tr></table></figure>
-然后我发现原来python的math里本来就有gcd函数。。。</li>
-<li>判断两个字符串正反相加是否相等<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code>import math
-class Solution:
-  def gcdOfStrings(self, str1: str, str2: str) -&gt; str:
-      ans_len = math.gcd(len(str1),len( str2))
-      ans = str1[: ans_len]
-      if str1 + str2 == str2 + str1:
-          return ans
-      return &quot;&quot;</code></pre><h3 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h3></li>
-<li>时间复杂度：字符串的拼接比较需要$O(n)$，最大公因子的计算需要$O(log n)$，总时间复杂度为$O(n)$</li>
-<li>空间复杂度：$O(n)$来存放$str1+str2$</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/" rel="tag">辗转相除法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-常见的Linux命令(一)--文件命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/"
-    >常见的Linux命令(一)--文件命令</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time datetime="2020-03-12T11:18:18.000Z" itemprop="datePublished">2020-03-12</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><ul>
-<li>命名英文原意：list</li>
-<li>功能：显示目录文件</li>
-<li>用法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项]... [文件]...</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>-a, –all            不隐藏任何以. 开始的项目<br>-A, –almost-all        列出除. 及.. 以外的任何项目<br>–author            与-l 同时使用时列出每个文件的作者<br>-b, –escape            以八进制溢出序列表示不可打印的字符<br> -l                使用较长格式列出信息<br>  -r, –reverse            逆序排列<br>  -R, –recursive        递归显示子目录<br>  -s, –size            以块数形式显示每个文件分配的尺寸<br>  -g                类似-l，但不列出所有者</p>
-      
-      <a class="article-more-link" href="/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%9F%BA%E7%A1%80/" rel="tag">Linux基础</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-图像直方图均衡化及规定化" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/"
-    >图像直方图均衡化及规定化</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/" class="article-date">
-  <time datetime="2020-03-03T12:27:53.000Z" itemprop="datePublished">2020-03-03</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <blockquote>
-<h3 id="均衡化"><a href="#均衡化" class="headerlink" title="均衡化"></a>均衡化</h3></blockquote>
-<ul>
-<li>读取原图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f &#x3D; imread(&#39;fig1.jpg&#39;);</span><br></pre></td></tr></table></figure>
-如果是彩色图像则需转换成灰度图像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f1&#x3D;rgb2gray(f);</span><br></pre></td></tr></table></figure></li>
-<li>计算累计直方图CDF：</li>
-</ul>
-<ol>
-<li><p>直方图概率表示：<br>$p_s(s_k)=\frac{n_k}{n}$</p>
-</li>
-<li><p>累计直方图表示：<br>$\sum_{i=0}^k p_s(s_i)$<br>为了减少算法复杂度，先对f排序，通过序号求CDF：</p>
-      
-      <a class="article-more-link" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96%E5%8F%8A%E8%A7%84%E5%AE%9A%E5%8C%96/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-图像的加噪与去噪" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/"
-    >图像的加噪与去噪</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/" class="article-date">
-  <time datetime="2020-03-03T08:13:48.000Z" itemprop="datePublished">2020-03-03</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">数字图像处理</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <blockquote>
-<h3 id="实验原图"><a href="#实验原图" class="headerlink" title="实验原图"></a>实验原图</h3><img src="/image/Fig2.jpg">
-</blockquote>
-<blockquote>
-<h3 id="以高斯噪声为例加噪去噪"><a href="#以高斯噪声为例加噪去噪" class="headerlink" title="以高斯噪声为例加噪去噪"></a>以高斯噪声为例加噪去噪</h3><p>matlab自带的加噪函数imnoise</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g &#x3D; imnoise(f1,&#39;gaussian&#39;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<blockquote>
-<p>噪声图像<br><img src="/image/result5.png"></p>
-</blockquote>
-</blockquote>
-      
-      <a class="article-more-link" href="/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
 
 
     </footer>

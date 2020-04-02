@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>创建进程、线程</title>
+    <url>/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><h4 id="Windows下创建进程"><a href="#Windows下创建进程" class="headerlink" title="Windows下创建进程"></a>Windows下创建进程</h4><p>CreateProcess函数的具体参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BOOL CreateProcess(  </span><br><span class="line">　LPCTSTR lpApplicationName, &#x2F;&#x2F; 应用程序名称  </span><br><span class="line">　LPTSTR lpCommandLine, &#x2F;&#x2F; 命令行字符串  </span><br><span class="line">　LPSECURITY_ATTRIBUTES lpProcessAttributes, &#x2F;&#x2F; 进程的安全属性  </span><br><span class="line">　LPSECURITY_ATTRIBUTES lpThreadAttributes, &#x2F;&#x2F; 线程的安全属性  </span><br><span class="line">　BOOL bInheritHandles, &#x2F;&#x2F; 是否继承父进程的属性  </span><br><span class="line">　DWORD dwCreationFlags, &#x2F;&#x2F; 创建标志  </span><br><span class="line">　LPVOID lpEnvironment, &#x2F;&#x2F; 指向新的环境块的指针  </span><br><span class="line">　LPCTSTR lpCurrentDirectory, &#x2F;&#x2F; 指向当前目录名的指针  </span><br><span class="line">　LPSTARTUPINFO lpStartupInfo, &#x2F;&#x2F; 传递给新进程的信息  </span><br><span class="line">　LPPROCESS_INFORMATION lpProcessInformation &#x2F;&#x2F; 新进程返回的信息  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define LINE 1024</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	STARTUPINFO si &#x3D; &#123; sizeof(si) &#125;;</span><br><span class="line">	PROCESS_INFORMATION pi;</span><br><span class="line"></span><br><span class="line">	const char* filename &#x3D; &quot;C:\\Windows\\system32\\notepad.exe&quot;;</span><br><span class="line">	TCHAR command[LINE];</span><br><span class="line">	MultiByteToWideChar(CP_ACP, 0, filename, -1, command, LINE);</span><br><span class="line">	::CreateProcess(NULL, command, NULL, NULL, FALSE,</span><br><span class="line">		CREATE_NEW_CONSOLE, NULL, NULL, &amp;si, &amp;pi);</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过该段程序可以启动记事本。</p>
+<h4 id="Windows下创建线程"><a href="#Windows下创建线程" class="headerlink" title="Windows下创建线程"></a>Windows下创建线程</h4><p>CreateThread函数的具体参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HANDLE WINAPI CreateThread(</span><br><span class="line">	  _In_opt_  LPSECURITY_ATTRIBUTES  lpThreadAttributes,   </span><br><span class="line">	  _In_      SIZE_T                 dwStackSize,</span><br><span class="line">	  _In_      LPTHREAD_START_ROUTINE lpStartAddress,</span><br><span class="line">	  _In_opt_  LPVOID                 lpParameter,</span><br><span class="line">	  _In_      DWORD                  dwCreationFlags,</span><br><span class="line">	  _Out_opt_ LPDWORD                lpThreadId</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+<p>第一个参数 lpThreadAttributes 表示线程内核对象的安全属性，一般传入NULL表示使用默认设置。<br>第二个参数 dwStackSize 表示线程栈空间大小。传入0表示使用默认大小（1MB）。<br>第三个参数 lpStartAddress 表示新线程所执行的线程函数地址，多个线程可以使用同一个函数地址。<br>第四个参数 lpParameter 是传给线程函数的参数。<br>第五个参数 dwCreationFlags 指定额外的标志来控制线程的创建，为0表示线程创建之后立即就可以进行调度，如果为CREATE_SUSPENDED则表示线程创建后暂停运行，这样它就无法调度，直到调用ResumeThread()。<br>第六个参数 lpThreadId 将返回线程的ID号，传入NULL表示不需要返回该线程ID号。</p>
+<blockquote>
+<p>现在一般用_beginthreadex()函数更安全地创建线程。</p>
+</blockquote>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include&lt;Windows.h&gt;</span><br><span class="line"></span><br><span class="line">DWORD WINAPI FatherThreadFunc(LPVOID) &#123;</span><br><span class="line">	printf(&quot;This is father Thread, pid&#x3D;%d\n&quot;, GetCurrentThreadId());</span><br><span class="line">	for (int i &#x3D; 0; i &lt; 1000; i++) &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, i);</span><br><span class="line">		Sleep(500);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DWORD WINAPI SonThreadFunc(LPVOID) &#123;</span><br><span class="line">	printf(&quot;This is son Thread, pid&#x3D;%d\n&quot;, GetCurrentThreadId());</span><br><span class="line">	for (int i &#x3D; 1000; i &gt; 0; i--) &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, i);</span><br><span class="line">		Sleep(500);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	HANDLE hThread[2];</span><br><span class="line">	DWORD ThreadID;</span><br><span class="line"></span><br><span class="line">	if ((hThread[0] &#x3D; CreateThread(NULL, 0, FatherThreadFunc, 0, 0, &amp;ThreadID)) &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		printf(&quot;create error!\n&quot;);</span><br><span class="line">	&#125;;</span><br><span class="line">	if ((hThread[1] &#x3D; CreateThread(NULL, 0, SonThreadFunc, 0, 0, &amp;ThreadID)) &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		printf(&quot;create error!\n&quot;);</span><br><span class="line">	&#125;;</span><br><span class="line">	WaitForMultipleObjects(2, hThread, TRUE, INFINITE);</span><br><span class="line">	CloseHandle(hThread[0]);</span><br><span class="line">	CloseHandle(hThread[1]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里演示了创建两个线程，一个从1数到1000，一个从1000数到1。</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><h4 id="Linux创建进程"><a href="#Linux创建进程" class="headerlink" title="Linux创建进程"></a>Linux创建进程</h4><p>父进程通过fork()来创建子进程</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;先输出该进程的进程号</span><br><span class="line">    fprintf(stdout,&quot;I am the first process,my pid is %d,my parent pid is %d\n&quot;,getpid(),getppid());</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;创建进程</span><br><span class="line">    pid_t pid;</span><br><span class="line">    if((pid&#x3D;fork())&lt;0)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;如果进程创建失败</span><br><span class="line">        fprintf(stderr,&quot;fork failed!&quot;);</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">    else if(pid&#x3D;&#x3D;0)&#x2F;&#x2F;子进程fork()返回值为0</span><br><span class="line">        fprintf(stdout,&quot;I am the child process,my pid is %d,my parent pid is %d\n&quot;,getpid(),getppid());</span><br><span class="line">    else&#x2F;&#x2F;父进程fork()返回值为子进程进程号</span><br><span class="line">        fprintf(stdout,&quot;I am the parent process,my pid is %d,my child pid is %d,my parent pid is %d\n&quot;,getpid(),pid,getppid());</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="/image/sendpix0.jpg"></p>
+<h4 id="Linux创建线程"><a href="#Linux创建线程" class="headerlink" title="Linux创建线程"></a>Linux创建线程</h4><p>代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">static void* pthread_1(void *pVoid)&#123;</span><br><span class="line">    for(int i &#x3D;0; i&lt;1000; i++)&#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, i);</span><br><span class="line">        sleep(1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">static void* pthread_2(void *pVoid)&#123;</span><br><span class="line">    for(int i &#x3D;0; i&lt;1000; i++)&#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, 1000-i);</span><br><span class="line">        sleep(1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    pthread_t tips_1;</span><br><span class="line">    pthread_t tips_2;</span><br><span class="line">    if((pthread_create(&amp;tips_1,NULL,pthread_1,NULL))!&#x3D;0)</span><br><span class="line">	&#123;</span><br><span class="line">		fprintf(stderr,&quot;thread_1 failed!&quot;);</span><br><span class="line">		exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	if((pthread_create(&amp;tips_2,NULL,pthread_2,NULL))!&#x3D;0)</span><br><span class="line">	&#123;</span><br><span class="line">		fprintf(stderr,&quot;thread_2 failed!&quot;);</span><br><span class="line">		exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">    void *result1;</span><br><span class="line">    void *result2;</span><br><span class="line"></span><br><span class="line">    pthread_join(tips_1, &amp;result1);</span><br><span class="line">    pthread_join(tips_2, &amp;result2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br>效果与Windows下的一样<br><img src="/image/sendpix1.jpg"></p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>进程控制</tag>
+        <tag>线程控制</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>卡牌分组</title>
+    <url>/2020/03/28/%E5%8D%A1%E7%89%8C%E5%88%86%E7%BB%84/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/solution/qia-pai-fen-zu-by-leetcode-solution/" target="_blank" rel="noopener">原题链接</a><br>collections.Counter统计字符串（数字）种类及数量，返回字典；</p>
+<p>functools.reduce逐次对上次函数结果与当前序列元素应用函数；</p>
+<ul>
+<li>reduce(function, sequence)</li>
+<li>例如 reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) 计算为((((1+2)+3)+4)+5)</li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>最大公约数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>水壶问题（Die Hard）</title>
+    <url>/2020/03/24/%E6%B0%B4%E5%A3%B6%E9%97%AE%E9%A2%98%EF%BC%88Die-Hard%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/water-and-jug-problem/" target="_blank" rel="noopener">原题链接</a></p>
+<ul>
+<li>深度优先搜索算法<br>用(remain_x,remain_y)记录当前状态，当所有状态都被遍历时就能得到结果。<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def canMeasureWater(self, x: int, y: int, z: int) -&gt; bool:</span><br><span class="line">        stack &#x3D; [(0, 0)]</span><br><span class="line">        self.seen &#x3D; set()</span><br><span class="line">        while stack:</span><br><span class="line">            remain_x, remain_y &#x3D; stack.pop()</span><br><span class="line">            if remain_x &#x3D;&#x3D; z or remain_y &#x3D;&#x3D; z or remain_x + remain_y &#x3D;&#x3D; z:</span><br><span class="line">                return True</span><br><span class="line">            if (remain_x, remain_y) in self.seen:</span><br><span class="line">                continue</span><br><span class="line">            self.seen.add((remain_x, remain_y))</span><br><span class="line">            # 把 X 壶灌满。</span><br><span class="line">            stack.append((x, remain_y))</span><br><span class="line">            # 把 Y 壶灌满。</span><br><span class="line">            stack.append((remain_x, y))</span><br><span class="line">            # 把 X 壶倒空。</span><br><span class="line">            stack.append((0, remain_y))</span><br><span class="line">            # 把 Y 壶倒空。</span><br><span class="line">            stack.append((remain_x, 0))</span><br><span class="line">            # 把 X 壶的水灌进 Y 壶，直至灌满或倒空。</span><br><span class="line">            stack.append((remain_x - min(remain_x, y - remain_y), remain_y + min(remain_x, y - remain_y)))</span><br><span class="line">            # 把 Y 壶的水灌进 X 壶，直至灌满或倒空。</span><br><span class="line">            stack.append((remain_x + min(remain_y, x - remain_x), remain_y - min(remain_y, x - remain_x)))</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure></li>
+<li>数学方法<br>因为装满或者倒出不满的水壶没有意义，所以每次操作必定是有$x$或$y$升水的变化，即$ax+by=z$，贝祖定理告诉我们，$ax+by=z$有解当且仅当$z$是$x,y$的最大公约数的倍数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def canMeasureWater(self, x: int, y: int, z: int) -&gt; bool:</span><br><span class="line">        if x + y &lt; z:</span><br><span class="line">            return False</span><br><span class="line">        if x &#x3D;&#x3D; 0 or y &#x3D;&#x3D; 0:</span><br><span class="line">            return z &#x3D;&#x3D; 0 or x + y &#x3D;&#x3D; z</span><br><span class="line">        return z % math.gcd(x, y) &#x3D;&#x3D; 0</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode刷题</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>指纹识别处理（一）--预处理</title>
+    <url>/2020/03/24/%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB%E5%A4%84%E7%90%86%EF%BC%88%E4%B8%80%EF%BC%89--%E9%A2%84%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h4 id="图像的归一化"><a href="#图像的归一化" class="headerlink" title="图像的归一化"></a>图像的归一化</h4><p>指纹图像的归一化的目的是使得图像灰度值达到一个预先定义的平均值和方差，增强图像整体对比度。归一化处理能够有效地解决按压不均匀对采集到的指纹图像的影响。<br>$$<br>g(x,y) = \left{ \begin{array}{ll}<br>    m_0+\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)\geq m$}\<br>    m_0-\sqrt{\frac{v_0(I(x,y)-m)^2}{v}} &amp; \textrm{if $g(x,y)&lt;m$}<br>    \end{array} \right.<br>$$<br>其中$m,v$分别为图像的均值和方差，$m_0,v_0$为指定的方差和均值</p>
+<a id="more"></a>
+<h5 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">image &#x3D; imread(&#39;F1.jpg&#39;);</span><br><span class="line">[row, cloumn] &#x3D; size(image);</span><br><span class="line">dimage &#x3D; double(image);</span><br><span class="line">mean &#x3D; mean(mean(dimage));</span><br><span class="line">sigma &#x3D; std2(dimage);</span><br><span class="line">m0 &#x3D; 100; %期望的均值</span><br><span class="line">s0 &#x3D; 2000; %期望的方差</span><br><span class="line">for x&#x3D;1:row</span><br><span class="line">    for y&#x3D;1:cloumn</span><br><span class="line">        if dimage(x,y)&gt; mean</span><br><span class="line">            dimage(x,y)&#x3D;m0+sqrt(s0*(dimage(x,y)-mean)&#x2F;sigma);</span><br><span class="line">        else</span><br><span class="line">            dimage(x,y)&#x3D;m0-sqrt(s0*(mean-dimage(x,y))&#x2F;sigma);</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line">figure,imshow(uint8(dimage))</span><br></pre></td></tr></table></figure>
+<h5 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h5><p>原图：<br><img src="/image/F1.png"><br>归一化后的图：<br><img src="/image/guiyi1.png"></p>
+<p>作频谱图可以发现被滤去的频率：<br><img src="/image/pinpu1.png"></p>
+<p>参考资料：<br>[1]<a href="https://wenku.baidu.com/view/9a30a721d5d8d15abe23482fb4daa58da0111c82.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/9a30a721d5d8d15abe23482fb4daa58da0111c82.html</a><br>[2]<a href="https://blog.csdn.net/MrCharles/article/details/79292496" target="_blank" rel="noopener">https://blog.csdn.net/MrCharles/article/details/79292496</a></p>
+]]></content>
+      <categories>
+        <category>数字图像处理</category>
+      </categories>
+      <tags>
+        <tag>指纹识别</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WinDump抓包</title>
     <url>/2020/03/22/WinDump%E6%8A%93%E5%8C%85/</url>
     <content><![CDATA[<h3 id="安装WinDump"><a href="#安装WinDump" class="headerlink" title="安装WinDump"></a>安装WinDump</h3><ol>

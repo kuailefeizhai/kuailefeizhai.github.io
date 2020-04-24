@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-02T15:06:08.784Z</updated>
+  <updated>2020-04-24T12:39:04.084Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>页面淘汰算法</title>
+    <link href="http://yoursite.com/2020/04/23/%E9%A1%B5%E9%9D%A2%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2020/04/23/%E9%A1%B5%E9%9D%A2%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95/</id>
+    <published>2020-04-23T05:52:21.000Z</published>
+    <updated>2020-04-24T12:39:04.084Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;页面替换策略&quot;&gt;&lt;a href=&quot;#页面替换策略&quot; class=&quot;headerlink&quot; title=&quot;页面替换策略&quot;&gt;&lt;/a&gt;页面替换策略&lt;/h3&gt;&lt;h4 id=&quot;全局页面替换策略&quot;&gt;&lt;a href=&quot;#全局页面替换策略&quot; class=&quot;headerlink&quot; title=&quot;全局页面替换策略&quot;&gt;&lt;/a&gt;全局页面替换策略&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;最佳页面替换算法OPT&lt;br&gt;选择“将来不再使用的”或“在最远的将来才被访问的”页面被置换。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;先进先出页面替换算法FIFO&lt;br&gt;算法淘汰最先调入内存的页，或者说在内存中驻留时间最长的页。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;存在Belady 异常现象，即缓存页面变大，命中率反而下降。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最近最少用页面替换算法LRU&lt;br&gt;淘汰使用频率最低的页面。&lt;br&gt;LRU计数法实现即为LFU。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第二次机会页面替换算法SCR&lt;br&gt;检查FIFO中的队首页面(最早进入内存页面)，如果它的“引用位”是0，这个页面既老又没有用，选择该页面淘汰；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;时钟页面替换算法Clock&lt;br&gt;实现方式与二次机会置换基本一样，只不过将线形链表构成一个环形链表。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="存储管理" scheme="http://yoursite.com/tags/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>创建进程、线程</title>

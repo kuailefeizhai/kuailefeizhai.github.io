@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    页面淘汰算法 |  HA
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="HA" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-页面淘汰算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  页面淘汰算法
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/23/%E9%A1%B5%E9%9D%A2%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-04-23T05:52:21.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.2k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="页面替换策略"><a href="#页面替换策略" class="headerlink" title="页面替换策略"></a>页面替换策略</h3><h4 id="全局页面替换策略"><a href="#全局页面替换策略" class="headerlink" title="全局页面替换策略"></a>全局页面替换策略</h4><ul>
+<li><p>最佳页面替换算法OPT<br>选择“将来不再使用的”或“在最远的将来才被访问的”页面被置换。 </p>
+</li>
+<li><p>先进先出页面替换算法FIFO<br>算法淘汰最先调入内存的页，或者说在内存中驻留时间最长的页。</p>
+<blockquote>
+<p>存在Belady 异常现象，即缓存页面变大，命中率反而下降。</p>
+</blockquote>
+</li>
+<li><p>最近最少用页面替换算法LRU<br>淘汰使用频率最低的页面。<br>LRU计数法实现即为LFU。</p>
+</li>
+<li><p>第二次机会页面替换算法SCR<br>检查FIFO中的队首页面(最早进入内存页面)，如果它的“引用位”是0，这个页面既老又没有用，选择该页面淘汰；</p>
+</li>
+<li><p>时钟页面替换算法Clock<br>实现方式与二次机会置换基本一样，只不过将线形链表构成一个环形链表。</p>
+<a id="more"></a>
+<h5 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h5><p>在windows环境下编写一个程序，模拟实现OPT,FIFO,LRU等页面淘汰算法,计算“分配不同的页框数”，“页框具有不同的大小”，“不同的指令访问顺序”，“不同淘汰算法”等情形下的命中率。（命中率 = 1-页面失效次数/页地址流长度）。提示：（1）用数组模拟内存；（2）访问并输出数组某个元素即为执行指令；（3）用随机数改变元素的访问顺序，以获得不同的指令流，以便获得不同的局部性。</p>
+</li>
+<li><p>OPT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">from random import shuffle</span><br><span class="line">class storage(object):</span><br><span class="line"></span><br><span class="line">	def __init__(self, maxlength: int):</span><br><span class="line">		self.maxlength &#x3D; maxlength</span><br><span class="line">		self.curlength &#x3D; 0</span><br><span class="line">		self.list &#x3D; []</span><br><span class="line"></span><br><span class="line">	def run(self, key: int, cur: int):</span><br><span class="line">		print(&quot;访问&quot;, key)</span><br><span class="line">		if key in self.list:</span><br><span class="line">			print(&quot;命中！&quot;)</span><br><span class="line">			print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;未命中！&quot;)</span><br><span class="line">			#页面未满</span><br><span class="line">			if self.curlength &lt; self.maxlength:</span><br><span class="line">				self.list.append(key)</span><br><span class="line">				self.curlength +&#x3D; 1</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line">			#页面满</span><br><span class="line">			else:</span><br><span class="line">				useless &#x3D; []</span><br><span class="line">				#如果存在不会再用到的数，替换并退出</span><br><span class="line">				for i in range(self.maxlength):</span><br><span class="line">					if self.list[i] not in visit[cur: todo]:</span><br><span class="line">						self.list[i] &#x3D; key</span><br><span class="line">						print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line">						return</span><br><span class="line">					useless.append(cur)</span><br><span class="line">				#寻找最远的未来用的数</span><br><span class="line">				for i in range(self.maxlength):</span><br><span class="line">					for j in range(cur, todo):</span><br><span class="line">						if self.list[i] &#x3D;&#x3D; visit[j]:</span><br><span class="line">							useless[i] &#x3D; j</span><br><span class="line">							break</span><br><span class="line">				max_position &#x3D; 0</span><br><span class="line">				for i in range(self.maxlength):</span><br><span class="line">					if useless[i] &gt; useless[max_position]:</span><br><span class="line">						max_position &#x3D; i</span><br><span class="line">				self.list[max_position] &#x3D; key</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:	</span><br><span class="line">	visit &#x3D; [4, 3, 2, 1, 4, 3, 5, 4, 3, 2, 1, 5]</span><br><span class="line">	todo &#x3D; len(visit)</span><br><span class="line">	cur &#x3D; 0</span><br><span class="line">	maxlength &#x3D; 3</span><br><span class="line">	#乱序排列visit</span><br><span class="line">	shuffle(visit)</span><br><span class="line">	print(&quot;待访问数组：&quot;, visit)</span><br><span class="line">	obj &#x3D; storage_opt(maxlength)</span><br><span class="line">	for i in visit:</span><br><span class="line">		obj.run(i, cur)</span><br><span class="line">		cur +&#x3D; 1</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src="/image/result15.png">
+</li>
+<li><p>FIFO<br>(以下只贴storage类代码)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class storage(object):</span><br><span class="line"></span><br><span class="line">	def __init__(self, maxlength: int):</span><br><span class="line">		self.maxlength &#x3D; maxlength</span><br><span class="line">		self.curlength &#x3D; 0</span><br><span class="line">		self.list &#x3D; []</span><br><span class="line"></span><br><span class="line">	def run(self, key: int):</span><br><span class="line">		print(&quot;访问&quot;, key)</span><br><span class="line">		if key in self.list:</span><br><span class="line">			print(&quot;命中！&quot;)</span><br><span class="line">			print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;未命中！&quot;)</span><br><span class="line">			#页面未满</span><br><span class="line">			if self.curlength &lt; self.maxlength:</span><br><span class="line">				self.list.append(key)</span><br><span class="line">				self.curlength +&#x3D; 1</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list)</span><br><span class="line">			#页面满</span><br><span class="line">			else:</span><br><span class="line">				for i in range(maxlength - 1):</span><br><span class="line">					self.list[-1-i] &#x3D; self.list[-2-i]</span><br><span class="line">				self.list[0] &#x3D; key</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src="/image/result16.png">
+</li>
+<li><p>LRU</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class storage(object):</span><br><span class="line"></span><br><span class="line">	def __init__(self, maxlength: int):</span><br><span class="line">		self.maxlength &#x3D; maxlength</span><br><span class="line">		self.curlength &#x3D; 0</span><br><span class="line">		self.list &#x3D; []</span><br><span class="line">		self.R &#x3D; []</span><br><span class="line"></span><br><span class="line">	def run(self, key: int):</span><br><span class="line">		for i in range(self.curlength):</span><br><span class="line">			self.R[i] &#x3D; self.R[i] &lt;&lt; 1</span><br><span class="line">		print(&quot;访问&quot;, key)</span><br><span class="line">		if key in self.list:</span><br><span class="line">			print(&quot;命中！&quot;)</span><br><span class="line">			for i in range(self.curlength):</span><br><span class="line">				if self.list[i] &#x3D;&#x3D; key:</span><br><span class="line">					self.R[i] &#x3D; 1</span><br><span class="line">					break</span><br><span class="line">			print(&quot;now list &#x3D; &quot;, self.list, &quot;R &#x3D; &quot;, self.R)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;未命中！&quot;)</span><br><span class="line">			#页面未满</span><br><span class="line">			if self.curlength &lt; self.maxlength:</span><br><span class="line">				self.list.append(key)</span><br><span class="line">				self.R.append(1)</span><br><span class="line">				self.curlength +&#x3D; 1</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list, &quot;R &#x3D; &quot;, self.R)</span><br><span class="line">			#页面满</span><br><span class="line">			else:</span><br><span class="line">				max_position &#x3D; 0</span><br><span class="line">				for i in range(self.maxlength):</span><br><span class="line">					if self.R[i] &gt; self.R[max_position]:</span><br><span class="line">						max_position &#x3D; i</span><br><span class="line">				self.list[max_position] &#x3D; key</span><br><span class="line">				self.R[max_position] &#x3D; 1</span><br><span class="line">				print(&quot;now list &#x3D; &quot;, self.list, &quot;R &#x3D; &quot;, self.R)</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src="/image/result17.png">
+
+</li>
+</ul>
+<hr>
+<p>LFU缓存算法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">class LFUCache:</span><br><span class="line"></span><br><span class="line">    def __init__(self, capacity: int):</span><br><span class="line">        self.capacity &#x3D; capacity</span><br><span class="line">        self.curnums &#x3D; 0</span><br><span class="line">        self.key &#x3D; []</span><br><span class="line">        self.value &#x3D; []</span><br><span class="line">        self.frequnce &#x3D; []</span><br><span class="line">        self.R &#x3D; []</span><br><span class="line"></span><br><span class="line">    def get(self, key: int) -&gt; int:</span><br><span class="line">        for i in range(self.curnums):</span><br><span class="line">            self.R[i] +&#x3D; 1</span><br><span class="line">        for i in range(self.curnums):</span><br><span class="line">            if self.key[i] &#x3D;&#x3D; key:</span><br><span class="line">                self.frequnce[i] +&#x3D; 1</span><br><span class="line">                self.R[i] &#x3D; 1</span><br><span class="line">                return self.value[i]</span><br><span class="line">        return -1</span><br><span class="line"></span><br><span class="line">    def put(self, key: int, value: int) -&gt; None:</span><br><span class="line">        for i in range(self.curnums):</span><br><span class="line">            self.R[i] +&#x3D; 1</span><br><span class="line">        for i in range(self.curnums):</span><br><span class="line">            if self.key[i] &#x3D;&#x3D; key:</span><br><span class="line">                self.value[i] &#x3D; value</span><br><span class="line">                self.frequnce[i] +&#x3D; 1</span><br><span class="line">                return</span><br><span class="line">        if self.curnums &lt; self.capacity:</span><br><span class="line">            self.key.append(key)</span><br><span class="line">            self.value.append(value)</span><br><span class="line">            self.frequnce.append(1)</span><br><span class="line">            self.R.append(1)</span><br><span class="line">            self.curnums +&#x3D; 1</span><br><span class="line">            return</span><br><span class="line">        if self.curnums &gt; 0:</span><br><span class="line">            temp &#x3D; [0]</span><br><span class="line">            for i in range(self.curnums):</span><br><span class="line">                if self.frequnce[i] &lt; self.frequnce[temp[0]]:</span><br><span class="line">                    temp &#x3D; [i]</span><br><span class="line">                elif self.frequnce[i] &#x3D;&#x3D; self.frequnce[temp[0]]:</span><br><span class="line">                    temp.append(i)</span><br><span class="line">            position &#x3D; temp[0]</span><br><span class="line">            for i in temp:</span><br><span class="line">                if self.R[i] &gt; self.R[position]:</span><br><span class="line">                    position &#x3D; i</span><br><span class="line">            self.key[position] &#x3D; key</span><br><span class="line">            self.value[position] &#x3D; value</span><br><span class="line">            self.frequnce[position] &#x3D; 1</span><br><span class="line">            self.R[position] &#x3D; 1</span><br></pre></td></tr></table></figure>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/23/%E9%A1%B5%E9%9D%A2%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" rel="tag">存储管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/04/02/%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">创建进程、线程</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        快乐肥宅
+      </li>
+      <li>
+        
+          Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="HA"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>暂无</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/ayer.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/ayer.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+    strings: ['坚持就是胜利','加油','奥力给'],
+    startDelay: 0,
+    typeSpeed: 200,
+    loop: true,
+    backSpeed: 100,
+    showCursor: true
+    });
+  } catch (err) {
+  }
+  
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer:'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

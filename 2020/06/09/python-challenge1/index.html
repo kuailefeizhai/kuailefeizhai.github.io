@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">350字</span>
+            <span class="post-count">343字</span>
         </span>
     </span>
 
@@ -100,13 +100,13 @@
       
 
       
-      <p>偶然发现的网站<a href="http://www.pythonchallenge.com/，网站上有33个python挑战，感觉像猜谜，当游戏玩玩。" target="_blank" rel="noopener">http://www.pythonchallenge.com/，网站上有33个python挑战，感觉像猜谜，当游戏玩玩。</a></p>
+      <p>偶然发现的网站<a href="http://www.pythonchallenge.com/，" target="_blank" rel="noopener">http://www.pythonchallenge.com/，</a><br>网站上有33个python挑战，感觉像猜谜，当游戏玩玩。</p>
 <hr>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/map.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc1-1.jpg"></p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/map.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc1-1.png"></p>
 <a id="more"></a>
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>由图片可知题目的意思是把每个字母后移两位，<br>译文为</p>
 <p>i hope you didnt translate it by hand.<br>thats what computers are for. doing it in by hand is inefficient and that’s why this text is so long.<br>using string.maketrans() is recommended. now apply on the url.</p>
-<p>按网站的原意是要用maketrans函数，网址为<a href="http://www.pythonchallenge.com/pc/def/map.html，所以按规律翻译map即可，代码如下：" target="_blank" rel="noopener">http://www.pythonchallenge.com/pc/def/map.html，所以按规律翻译map即可，代码如下：</a></p>
+<p>按网站的原意是要用maketrans函数，网址在<a href="http://www.pythonchallenge.com/pc/def/map.html" target="_blank" rel="noopener">这</a>，所以按规律翻译map即可，代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s &#x3D; &quot;g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr&#39;q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj.&quot;</span><br><span class="line">before &#x3D; &#39;abcdefghijklmnopqrstuvwxyz&#39;</span><br><span class="line">after &#x3D; &#39;cdefghijklmnopqrstuvwxyzab&#39;</span><br><span class="line">t &#x3D; str.maketrans(before,after)</span><br><span class="line">s &#x3D; s.translate(t)</span><br><span class="line">print(&#39;map&#39;.translate(t))</span><br></pre></td></tr></table></figure>
 <hr>
 <p>maketrans() 方法用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式，第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。</p>

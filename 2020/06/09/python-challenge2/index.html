@@ -100,9 +100,9 @@
       
 
       
-      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc2-1.jpg"></p>
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc2-1.png"></p>
 <a id="more"></a>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>刚看到题目表示一脸懵逼，后来才发现Page Soure指的是网页源代码，如图所示，在网页源代码的注释中部分有一大堆文字：<br><img src="/image/pc2-2.jpg"></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>刚看到题目表示一脸懵逼，后来才发现Page Soure指的是网页源代码，如图所示，在网页源代码的注释中部分有一大堆文字：<br><img src="/image/pc2-2.png"></p>
 <p>并配有说明：find rare characters in the mess below:</p>
 <p>也就是说，我们需要在以下文字中找到出现频率最低的字。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">diction &#x3D; &#123;&#125;</span><br><span class="line">for i in list(text):</span><br><span class="line">    if diction.setdefault(i, 1):</span><br><span class="line">        diction[i] +&#x3D; 1</span><br><span class="line"></span><br><span class="line">rare &#x3D; []</span><br><span class="line">rarest &#x3D; 99999999</span><br><span class="line">for key, value in diction.items():</span><br><span class="line">    if value &lt; rarest:</span><br><span class="line">        rarest &#x3D; value</span><br><span class="line">        rare &#x3D; [key]</span><br><span class="line">    elif value &#x3D;&#x3D; rarest:</span><br><span class="line">        rare.append(key)</span><br><span class="line"></span><br><span class="line">print(rare)</span><br></pre></td></tr></table></figure>

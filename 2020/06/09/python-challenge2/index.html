@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">223字</span>
+            <span class="post-count">239字</span>
         </span>
     </span>
 
@@ -108,7 +108,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">diction &#x3D; &#123;&#125;</span><br><span class="line">for i in list(text):</span><br><span class="line">    if diction.setdefault(i, 1):</span><br><span class="line">        diction[i] +&#x3D; 1</span><br><span class="line"></span><br><span class="line">rare &#x3D; []</span><br><span class="line">rarest &#x3D; 99999999</span><br><span class="line">for key, value in diction.items():</span><br><span class="line">    if value &lt; rarest:</span><br><span class="line">        rarest &#x3D; value</span><br><span class="line">        rare &#x3D; [key]</span><br><span class="line">    elif value &#x3D;&#x3D; rarest:</span><br><span class="line">        rare.append(key)</span><br><span class="line"></span><br><span class="line">print(rare)</span><br></pre></td></tr></table></figure>
 <p>标答给出的代码写法更加简便：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s &#x3D; &#39;&#39;.join([line.rstrip() for line in text])    </span><br><span class="line">print(s)</span><br><span class="line">OCCURRENCES &#x3D; &#123;&#125;</span><br><span class="line">for c in s: OCCURRENCES[c] &#x3D; OCCURRENCES.get(c, 0) + 1</span><br><span class="line">avgOC &#x3D; len(s) &#x2F;&#x2F; len(OCCURRENCES)</span><br><span class="line">print (&#39;&#39;.join([c for c in s if OCCURRENCES[c] &lt; avgOC]) )</span><br></pre></td></tr></table></figure>
-<p>其中rstrip() 删除 string 字符串末尾的指定字符（默认为空格）。</p>
+<p>其中rstrip() 删除 string 字符串末尾的指定字符（默认为空格）。<br>结果为：equality<br>标准答案：</p>
+<p><a href="http://www.pythonchallenge.com/pcc/def/equality.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pcc/def/equality.html</a></p>
 
       
       <!-- reward -->

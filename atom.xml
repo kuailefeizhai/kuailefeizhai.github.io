@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-12T09:10:55.762Z</updated>
+  <updated>2020-06-16T09:08:45.434Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,61 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>python challenge5</title>
+    <link href="http://yoursite.com/2020/06/16/python-challenge5/"/>
+    <id>http://yoursite.com/2020/06/16/python-challenge5/</id>
+    <published>2020-06-16T08:55:45.000Z</published>
+    <updated>2020-06-16T09:08:45.434Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/peak.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc5-1.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python-challenge" scheme="http://yoursite.com/categories/python-challenge/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="益智游戏" scheme="http://yoursite.com/tags/%E7%9B%8A%E6%99%BA%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python challenge4</title>
+    <link href="http://yoursite.com/2020/06/16/python-challenge4/"/>
+    <id>http://yoursite.com/2020/06/16/python-challenge4/</id>
+    <published>2020-06-16T08:22:44.000Z</published>
+    <updated>2020-06-16T09:04:49.037Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/linkedlist.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc4-1.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python-challenge" scheme="http://yoursite.com/categories/python-challenge/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="益智游戏" scheme="http://yoursite.com/tags/%E7%9B%8A%E6%99%BA%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python challenge3</title>
     <link href="http://yoursite.com/2020/06/12/python-challenge3/"/>
     <id>http://yoursite.com/2020/06/12/python-challenge3/</id>
     <published>2020-06-12T08:59:27.000Z</published>
-    <updated>2020-06-12T09:10:55.762Z</updated>
+    <updated>2020-06-16T09:04:42.513Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/equality.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc3-1.png&quot;&gt;&lt;/p&gt;
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/equality.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc3-1.png&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -494,70 +540,6 @@
     
     
       <category term="图像的基本操作" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>柱状图中最大的矩形</title>
-    <link href="http://yoursite.com/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/"/>
-    <id>http://yoursite.com/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/</id>
-    <published>2020-03-02T12:16:00.000Z</published>
-    <updated>2020-03-02T12:39:00.670Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/largest-rectangle-in-histogram/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原题链接&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h4
-        
-      
-    
-    </summary>
-    
-    
-      <category term="leetcode刷题" scheme="http://yoursite.com/categories/leetcode%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>接雨水</title>
-    <link href="http://yoursite.com/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
-    <id>http://yoursite.com/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</id>
-    <published>2020-02-27T11:52:10.000Z</published>
-    <updated>2020-03-02T12:37:10.602Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/trapping-rain-water/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原题链接&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;h4
-        
-      
-    
-    </summary>
-    
-    
-      <category term="leetcode刷题" scheme="http://yoursite.com/categories/leetcode%E5%88%B7%E9%A2%98/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
-    
-      <category term="双指针" scheme="http://yoursite.com/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
     
   </entry>
   

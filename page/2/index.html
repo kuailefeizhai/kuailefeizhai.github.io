@@ -69,6 +69,166 @@
     
     
     
+    <article id="post-WinDump抓包" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/22/WinDump%E6%8A%93%E5%8C%85/"
+    >WinDump抓包</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/22/WinDump%E6%8A%93%E5%8C%85/" class="article-date">
+  <time datetime="2020-03-22T07:35:24.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/">网络信息安全</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h3 id="安装WinDump"><a href="#安装WinDump" class="headerlink" title="安装WinDump"></a>安装WinDump</h3><ol>
+<li>请先安装WinPcap</li>
+<li>将windump置于某个目录下，比如D盘根目录。无需安装。</li>
+<li>可选：把windump所在目录添加到系统变量Path</li>
+<li>请打开命令行窗口，执行windump，即可体验抓包。请不要通过双击windump图标来启动windump</li>
+</ol>
+<h3 id="抓取对百度的请求"><a href="#抓取对百度的请求" class="headerlink" title="抓取对百度的请求"></a>抓取对百度的请求</h3><ol>
+<li><p>找到本机的网卡，使用WinDump -D指令（用管理员身份打开）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WinDump -D</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/03/22/WinDump%E6%8A%93%E5%8C%85/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/" rel="tag">网络抓包分析</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-第181场周赛" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/"
+    >第181场周赛</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="article-date">
+  <time datetime="2020-03-22T05:33:13.000Z" itemprop="datePublished">2020-03-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <p><a href="https://leetcode-cn.com/problems/create-target-array-in-the-given-order/" target="_blank" rel="noopener">按既定顺序创建目标数组</a><br>送分题，就嗯加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def createTargetArray(self, nums: List[int], index: List[int]) -&gt; List[int]:</span><br><span class="line">        target &#x3D; []</span><br><span class="line">        for i in range(0, len(nums)):</span><br><span class="line">            target &#x3D; target[0:index[i]] + [nums[i]] + target[index[i]:len(target)]</span><br><span class="line">        return target</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode-cn.com/problems/four-divisors/" target="_blank" rel="noopener">四因数</a><br>没什么好说的</p>
+      
+      <a class="article-more-link" href="/2020/03/22/%E7%AC%AC181%E5%9C%BA%E5%91%A8%E8%B5%9B/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-第180场周赛" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -700,185 +860,6 @@ class Solution:
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" rel="tag">图像的基本操作</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-柱状图中最大的矩形" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/"
-    >柱状图中最大的矩形</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/03/02/%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2/" class="article-date">
-  <time datetime="2020-03-02T12:16:00.000Z" itemprop="datePublished">2020-03-02</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">原题链接</a></p>
-<blockquote>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>从左往右找出能完整覆盖每一个柱子的最大矩形：<br>遍历一遍，遇到比当前大的柱子就存入栈中；遇到比当前小的柱子就依次出栈直到栈顶比当前柱子大，计算出对应出栈位置的最大矩形面积为：<br>$temparea = heights[stack[-1]] * (len(heights) - stack[-2] - 1)$<br>同时与$maxarea$比较得到最终结果</p>
-</blockquote>
-<blockquote>
-<h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def largestRectangleArea(self, heights: List[int]) -&gt; int:</span><br><span class="line">        max_area &#x3D; 0</span><br><span class="line">        stack &#x3D; [-1]</span><br><span class="line">        temp_area &#x3D; 0</span><br><span class="line">        for i in range(0, len(heights)):</span><br><span class="line">            while len(stack) &gt; 1 and heights[i] &lt; heights[stack[-1]]:</span><br><span class="line">                temp_area &#x3D; heights[stack.pop()] * (i - stack[-1] - 1)</span><br><span class="line">                if temp_area &gt; max_area:</span><br><span class="line">                    max_area &#x3D; temp_area</span><br><span class="line">            stack.append(i)</span><br><span class="line">        while len(stack) &gt; 1:</span><br><span class="line">            temp_area &#x3D; heights[stack[-1]] * (len(heights) - stack[-2] - 1)</span><br><span class="line">            if temp_area &gt; max_area:</span><br><span class="line">                max_area &#x3D; temp_area</span><br><span class="line">            stack.pop()</span><br><span class="line">        return max_area</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="时间上的优化"><a href="#时间上的优化" class="headerlink" title="时间上的优化"></a>时间上的优化</h4><p>在heights数组后加入一个-1，使</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while len(stack) &gt; 1:</span><br><span class="line">    temp_area &#x3D; heights[stack[-1]] * (len(heights) - stack[-2] - 1)</span><br><span class="line">    if temp_area &gt; max_area:</span><br><span class="line">        max_area &#x3D; temp_area</span><br><span class="line">    stack.pop()</span><br></pre></td></tr></table></figure>
-<p>这部分代码在上一个循环就得到执行</p>
-<blockquote>
-<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4></blockquote>
-<ul>
-<li>时间复杂度：$O(n),n$个数字每个会被压栈弹栈各一次。</li>
-<li>空间复杂度：$O(n)，$栈的大小在极端（顺序排列）情况下等于heights大小。</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-接雨水" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"
-    >接雨水</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/02/27/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" class="article-date">
-  <time datetime="2020-02-27T11:52:10.000Z" itemprop="datePublished">2020-02-27</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode%E5%88%B7%E9%A2%98/">leetcode刷题</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">原题链接</a></p>
-<blockquote>
-<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4></blockquote>
-<h5 id="双指针法："><a href="#双指针法：" class="headerlink" title="双指针法："></a>双指针法：</h5><ol>
-<li>先找出最高的墙heightest;</li>
-<li>从左往右加到最高的墙，每次更新左边最高的墙temp；</li>
-<li>同理再从右往左加到最高的墙。</li>
-</ol>
-<blockquote>
-<h4 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def trap(self, height: List[int]) -&gt; int:</span><br><span class="line">        if len(height) &lt;&#x3D; 1:</span><br><span class="line">            return 0 </span><br><span class="line">        heightest &#x3D; height[0]</span><br><span class="line">        index &#x3D; 0</span><br><span class="line">        for i in range(1, len(height)):</span><br><span class="line">            if height[i] &gt; heightest:</span><br><span class="line">                index &#x3D; i</span><br><span class="line">                heightest &#x3D; height[i]</span><br><span class="line">        area &#x3D; 0</span><br><span class="line">        temp &#x3D; 0</span><br><span class="line">        for i in range(index):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        temp &#x3D; height[-1]</span><br><span class="line">        for i in reversed(range(index+1, len(height))):</span><br><span class="line">            if height[i] &gt;&#x3D; temp:</span><br><span class="line">                temp &#x3D; height[i]</span><br><span class="line">            else:</span><br><span class="line">                area +&#x3D; temp - height[i]</span><br><span class="line">        return area</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h4></blockquote>
-<ul>
-<li>时间复杂度：遍历找出最高的墙$O(n)$;从左带最高和从右到最高加起来$O(n)$;所以总共的复杂度$O(n)$；</li>
-<li>空间复杂度：只用了temp和heightest存数，$O(1)$。</li>
-</ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>

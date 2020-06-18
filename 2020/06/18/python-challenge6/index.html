@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    python challenge5 |  HA
+    python challenge6 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-python-challenge5" class="article article-type-post" itemscope
+  <article id="post-python-challenge6" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  python challenge5
+  python challenge6
 </h1>
   
 
@@ -49,8 +49,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/06/16/python-challenge5/" class="article-date">
-  <time datetime="2020-06-16T08:55:45.000Z" itemprop="datePublished">2020-06-16</time>
+      <a href="/2020/06/18/python-challenge6/" class="article-date">
+  <time datetime="2020-06-18T07:30:13.000Z" itemprop="datePublished">2020-06-18</time>
 </a>
       
   <div class="article-category">
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">458字</span>
+            <span class="post-count">425字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -100,24 +100,21 @@
       
 
       
-      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/peak.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc5-1.png"></p>
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/channel.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc6-1.png"></p>
 <a id="more"></a>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>网页源代码如下：<br><img src="/image/pc5-2.png"></p>
-<p>peak hell的谐音是pickle（一个python的对象序列化模块），需要用pickle对banner.p解析。</p>
-<hr>
-<p>模块 pickle 实现了对一个 Python 对象结构的二进制序列化和反序列化。 “pickling” 是将 Python 对象及其所拥有的层次结构转化为一个字节流的过程，而 “unpickling” 是相反的操作，会将（来自一个 binary file 或者 bytes-like object 的）字节流转化回一个对象层次结构。 pickling（和 unpickling）也被称为“序列化”, “编组” 1 或者 “平面化”。而为了避免混乱，此处采用术语 “封存 (pickling)” 和 “解封 (unpickling)”。<br>与 json 模块的比较<br>Pickle 协议和 JSON (JavaScript Object Notation) 间有着本质的不同：</p>
-<ul>
-<li>JSON 是一个文本序列化格式（它输出 unicode 文本，尽管在大多数时候它会接着以 utf-8 编码），而 pickle 是一个二进制序列化格式；</li>
-<li>JSON 是我们可以直观阅读的，而 pickle 不是；</li>
-<li>JSON是可互操作的，在Python系统之外广泛使用，而pickle则是Python专用的；</li>
-<li>默认情况下，JSON 只能表示 Python 内置类型的子集，不能表示自定义的类；但 pickle 可以表示大量的 Python 数据类型（可以合理使用 Python 的对象内省功能自动地表示大多数类型，复杂情况可以通过实现 specific object APIs 来解决）。</li>
-<li>不像pickle，对一个不信任的JSON进行反序列化的操作本身不会造成任意代码执行漏洞。</li>
-</ul>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from urllib.request import urlopen</span><br><span class="line">import pickle</span><br><span class="line">data &#x3D; pickle.load(urlopen(&quot;http:&#x2F;&#x2F;www.pythonchallenge.com&#x2F;pc&#x2F;def&#x2F;banner.p&quot;))</span><br><span class="line">for line in data:</span><br><span class="line">    print(&quot;&quot;.join([k * v for k, v in line]))</span><br></pre></td></tr></table></figure>
-<p>输出结果即为：<br><img src="/image/pc5-3.png"></p>
-<p>所以下一个网址是channel<br>标准答案：</p>
-<p><a href="http://www.pythonchallenge.com/pcc/def/channel.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pcc/def/channel.html</a></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>网页源代码第一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt; &lt;!-- &lt;-- zip --&gt;</span><br></pre></td></tr></table></figure>
+<p>将网址后缀改为channel.zip得到压缩文件channel.zip，如图所示，<br><img src="/image/pc6-2.png"></p>
+<p>其中第一个文件为readme.txt，写着：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">welcome to my zipped list.</span><br><span class="line"></span><br><span class="line">hint1: start from 90052</span><br><span class="line">hint2: answer is inside the zip</span><br></pre></td></tr></table></figure>
+<p>和python-challeng4类似，在压缩包中一直迭代寻找答案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import zipfile</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">zipFile &#x3D; zipfile.ZipFile(&#39;channel.zip&#39;, &#39;r&#39;)</span><br><span class="line">key &#x3D; &#39;90052&#39;</span><br><span class="line">while True:</span><br><span class="line">    data &#x3D; zipFile.read(key + &#39;.txt&#39;)</span><br><span class="line">    s &#x3D; str(data, encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    pattern &#x3D; re.compile(&#39;[0-9]+&#39;)</span><br><span class="line">    try:</span><br><span class="line">        key &#x3D; re.findall(pattern, s)[-1]</span><br><span class="line">    except:</span><br><span class="line">        break</span><br><span class="line">    print(key)</span><br></pre></td></tr></table></figure>
+<p>最后一个数字为46145，该文件写着：Collect the comments.<br>ZipFile.comment：<br>关联到 ZIP 文件的 bytes 对象形式的说明。 如果将说明赋给以 ‘w’, ‘x’ 或 ‘a’ 模式创建的 ZipFile 实例，它的长度不应超过65535 字节。 超过此长度的说明将被截断。<br>加一段代码来收集comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; num &#x3D; &#39;90052&#39;</span><br><span class="line">&gt;&gt;&gt; comments &#x3D; []</span><br><span class="line">&gt;&gt;&gt; while True:</span><br><span class="line">...     content &#x3D; f.read(num + &quot;.txt&quot;).decode(&quot;utf-8&quot;)</span><br><span class="line">...     comments.append(f.getinfo(num + &quot;.txt&quot;).comment.decode(&quot;utf-8&quot;))</span><br><span class="line">...     content</span><br><span class="line">...     match &#x3D; re.search(&quot;Next nothing is (\d+)&quot;, content)</span><br><span class="line">...     if match &#x3D;&#x3D; None:</span><br><span class="line">...         break</span><br><span class="line">...     num &#x3D; match.group(1)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; print(&quot;&quot;.join(comments))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">****************************************************************</span><br><span class="line">****************************************************************</span><br><span class="line">**                                                            **</span><br><span class="line">**   OO    OO    XX      YYYY    GG    GG  EEEEEE NN      NN  **</span><br><span class="line">**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE  NN    NN   **</span><br><span class="line">**   OO    OO XXX  XXX YYY   YY  GG GG     EE       NN  NN    **</span><br><span class="line">**   OOOOOOOO XX    XX YY        GGG       EEEEE     NNNN     **</span><br><span class="line">**   OOOOOOOO XX    XX YY        GGG       EEEEE      NN      **</span><br><span class="line">**   OO    OO XXX  XXX YYY   YY  GG GG     EE         NN      **</span><br><span class="line">**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE     NN      **</span><br><span class="line">**   OO    OO    XX      YYYY    GG    GG  EEEEEE     NN      **</span><br><span class="line">**                                                            **</span><br><span class="line">****************************************************************</span><br><span class="line"> **************************************************************</span><br></pre></td></tr></table></figure>
+<p>输入网址<a href="http://www.pythonchallenge.com/pc/def/hockey.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pc/def/hockey.html</a><br>得到：it’s in the air. look at the letters.<br>所以正确答案是氧气oxygen<br>标准答案：</p>
+<p><a href="http://www.pythonchallenge.com/pcc/def/oxygen.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pcc/def/oxygen.html</a></p>
 
       
       <!-- reward -->
@@ -187,7 +184,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/06/16/python-challenge5/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/06/18/python-challenge6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -205,19 +202,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/06/18/python-challenge6/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            python challenge6
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/06/16/python-challenge4/" class="article-nav-link">
+      <a href="/2020/06/16/python-challenge5/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">python challenge4</div>
+        <div class="article-nav-title">python challenge5</div>
       </a>
     
   </nav>

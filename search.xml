@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python challenge6</title>
+    <url>/2020/06/18/python-challenge6/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/channel.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc6-1.png"></p>
+<a id="more"></a>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>网页源代码第一行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html&gt; &lt;!-- &lt;-- zip --&gt;</span><br></pre></td></tr></table></figure>
+<p>将网址后缀改为channel.zip得到压缩文件channel.zip，如图所示，<br><img src="/image/pc6-2.png"></p>
+<p>其中第一个文件为readme.txt，写着：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">welcome to my zipped list.</span><br><span class="line"></span><br><span class="line">hint1: start from 90052</span><br><span class="line">hint2: answer is inside the zip</span><br></pre></td></tr></table></figure>
+<p>和python-challeng4类似，在压缩包中一直迭代寻找答案。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import zipfile</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">zipFile &#x3D; zipfile.ZipFile(&#39;channel.zip&#39;, &#39;r&#39;)</span><br><span class="line">key &#x3D; &#39;90052&#39;</span><br><span class="line">while True:</span><br><span class="line">    data &#x3D; zipFile.read(key + &#39;.txt&#39;)</span><br><span class="line">    s &#x3D; str(data, encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">    pattern &#x3D; re.compile(&#39;[0-9]+&#39;)</span><br><span class="line">    try:</span><br><span class="line">        key &#x3D; re.findall(pattern, s)[-1]</span><br><span class="line">    except:</span><br><span class="line">        break</span><br><span class="line">    print(key)</span><br></pre></td></tr></table></figure>
+<p>最后一个数字为46145，该文件写着：Collect the comments.<br>ZipFile.comment：<br>关联到 ZIP 文件的 bytes 对象形式的说明。 如果将说明赋给以 ‘w’, ‘x’ 或 ‘a’ 模式创建的 ZipFile 实例，它的长度不应超过65535 字节。 超过此长度的说明将被截断。<br>加一段代码来收集comments</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; num &#x3D; &#39;90052&#39;</span><br><span class="line">&gt;&gt;&gt; comments &#x3D; []</span><br><span class="line">&gt;&gt;&gt; while True:</span><br><span class="line">...     content &#x3D; f.read(num + &quot;.txt&quot;).decode(&quot;utf-8&quot;)</span><br><span class="line">...     comments.append(f.getinfo(num + &quot;.txt&quot;).comment.decode(&quot;utf-8&quot;))</span><br><span class="line">...     content</span><br><span class="line">...     match &#x3D; re.search(&quot;Next nothing is (\d+)&quot;, content)</span><br><span class="line">...     if match &#x3D;&#x3D; None:</span><br><span class="line">...         break</span><br><span class="line">...     num &#x3D; match.group(1)</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; print(&quot;&quot;.join(comments))</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">****************************************************************</span><br><span class="line">****************************************************************</span><br><span class="line">**                                                            **</span><br><span class="line">**   OO    OO    XX      YYYY    GG    GG  EEEEEE NN      NN  **</span><br><span class="line">**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE  NN    NN   **</span><br><span class="line">**   OO    OO XXX  XXX YYY   YY  GG GG     EE       NN  NN    **</span><br><span class="line">**   OOOOOOOO XX    XX YY        GGG       EEEEE     NNNN     **</span><br><span class="line">**   OOOOOOOO XX    XX YY        GGG       EEEEE      NN      **</span><br><span class="line">**   OO    OO XXX  XXX YYY   YY  GG GG     EE         NN      **</span><br><span class="line">**   OO    OO  XXXXXX   YYYYYY   GG   GG   EEEEEE     NN      **</span><br><span class="line">**   OO    OO    XX      YYYY    GG    GG  EEEEEE     NN      **</span><br><span class="line">**                                                            **</span><br><span class="line">****************************************************************</span><br><span class="line"> **************************************************************</span><br></pre></td></tr></table></figure>
+<p>输入网址<a href="http://www.pythonchallenge.com/pc/def/hockey.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pc/def/hockey.html</a><br>得到：it’s in the air. look at the letters.<br>所以正确答案是氧气oxygen<br>标准答案：</p>
+<p><a href="http://www.pythonchallenge.com/pcc/def/oxygen.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pcc/def/oxygen.html</a></p>
+]]></content>
+      <categories>
+        <category>python-challenge</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>益智游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python challenge5</title>
     <url>/2020/06/16/python-challenge5/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/peak.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc5-1.png"></p>

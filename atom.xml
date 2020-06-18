@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-16T09:08:45.434Z</updated>
+  <updated>2020-06-18T08:01:12.616Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python challenge6</title>
+    <link href="http://yoursite.com/2020/06/18/python-challenge6/"/>
+    <id>http://yoursite.com/2020/06/18/python-challenge6/</id>
+    <published>2020-06-18T07:30:13.000Z</published>
+    <updated>2020-06-18T08:01:12.616Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/channel.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc6-1.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python-challenge" scheme="http://yoursite.com/categories/python-challenge/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="益智游戏" scheme="http://yoursite.com/tags/%E7%9B%8A%E6%99%BA%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>python challenge5</title>
@@ -500,38 +523,6 @@
 &lt;li&gt;&lt;p&gt;直方图概率表示：&lt;br&gt;$p_s(s_k)=\frac{n_k}{n}$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;累计直方图表示：&lt;br&gt;$\sum_{i=0}^k p_s(s_i)$&lt;br&gt;为了减少算法复杂度，先对f排序，通过序号求CDF：&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="数字图像处理" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    
-      <category term="图像的基本操作" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图像的加噪与去噪</title>
-    <link href="http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/"/>
-    <id>http://yoursite.com/2020/03/03/%E5%9B%BE%E5%83%8F%E7%9A%84%E5%8A%A0%E5%99%AA%E4%B8%8E%E5%8E%BB%E5%99%AA/</id>
-    <published>2020-03-03T08:13:48.000Z</published>
-    <updated>2020-03-22T05:57:43.661Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;h3 id=&quot;实验原图&quot;&gt;&lt;a href=&quot;#实验原图&quot; class=&quot;headerlink&quot; title=&quot;实验原图&quot;&gt;&lt;/a&gt;实验原图&lt;/h3&gt;&lt;img src=&quot;/image/Fig2.jpg&quot;&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;h3 id=&quot;以高斯噪声为例加噪去噪&quot;&gt;&lt;a href=&quot;#以高斯噪声为例加噪去噪&quot; class=&quot;headerlink&quot; title=&quot;以高斯噪声为例加噪去噪&quot;&gt;&lt;/a&gt;以高斯噪声为例加噪去噪&lt;/h3&gt;&lt;p&gt;matlab自带的加噪函数imnoise&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;g &amp;#x3D; imnoise(f1,&amp;#39;gaussian&amp;#39;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;噪声图像&lt;br&gt;&lt;img src=&quot;/image/result5.png&quot;&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
     
     </summary>
     

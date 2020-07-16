@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-19T09:42:54.828Z</updated>
+  <updated>2020-07-16T06:45:12.825Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python challenge8</title>
+    <link href="http://yoursite.com/2020/07/16/python-challenge8/"/>
+    <id>http://yoursite.com/2020/07/16/python-challenge8/</id>
+    <published>2020-07-16T06:22:55.000Z</published>
+    <updated>2020-07-16T06:45:12.825Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/pc/def/integrity.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;网址&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;/image/pc8-1.png&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python-challenge" scheme="http://yoursite.com/categories/python-challenge/"/>
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+      <category term="益智游戏" scheme="http://yoursite.com/tags/%E7%9B%8A%E6%99%BA%E6%B8%B8%E6%88%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>python challenge7</title>
@@ -497,32 +520,6 @@
       <category term="字符串" scheme="http://yoursite.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="辗转相除法" scheme="http://yoursite.com/tags/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见的Linux命令(一)--文件命令</title>
-    <link href="http://yoursite.com/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2020/03/12/%E5%B8%B8%E8%A7%81%E7%9A%84Linux%E5%91%BD%E4%BB%A4(%E4%B8%80)--%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4/</id>
-    <published>2020-03-12T11:18:18.000Z</published>
-    <updated>2020-03-22T06:08:52.603Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;ls&quot;&gt;&lt;a href=&quot;#ls&quot; class=&quot;headerlink&quot; title=&quot;ls&quot;&gt;&lt;/a&gt;ls&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;命名英文原意：list&lt;/li&gt;
-&lt;li&gt;功能：显示目录文件&lt;/li&gt;
-&lt;li&gt;用法：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ls [选项]... [文件]...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;-a, –all            不隐藏任何以. 开始的项目&lt;br&gt;-A, –almost-all        列出除. 及.. 以外的任何项目&lt;br&gt;–author            与-l 同时使用时列出每个文件的作者&lt;br&gt;-b, –escape            以八进制溢出序列表示不可打印的字符&lt;br&gt; -l                使用较长格式列出信息&lt;br&gt;  -r, –reverse            逆序排列&lt;br&gt;  -R, –recursive        递归显示子目录&lt;br&gt;  -s, –size            以块数形式显示每个文件分配的尺寸&lt;br&gt;  -g                类似-l，但不列出所有者&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="Linux基础" scheme="http://yoursite.com/tags/Linux%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   

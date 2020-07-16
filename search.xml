@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>python challenge8</title>
+    <url>/2020/07/16/python-challenge8/</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/integrity.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc8-1.png"></p>
+<a id="more"></a>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>点击图片中的蜜蜂（看起来像苍蝇）会弹出表单让输入用户名和密码以及提示信息inflate（chrome打开没有）<br><img src="/image/pc8-2.png"><br>“inflate”膨胀的反义词是“compress”压缩。在网页源代码中有用户名和密码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">un: &#39;BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084&#39;</span><br><span class="line">pw: &#39;BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08&#39;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>这个开头是bzip2的压缩格式，引入bz2进行压缩（需要先将str转换成byte）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import bz2</span><br><span class="line"></span><br><span class="line">un &#x3D; bz2.decompress(b&#39;BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084&#39;)</span><br><span class="line">pw &#x3D; bz2.decompress(b&#39;BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08&#39;)</span><br><span class="line"></span><br><span class="line">print(&#39;un &#x3D; &#39;, un)</span><br><span class="line">print(&#39;pw &#x3D; &#39;, pw)</span><br></pre></td></tr></table></figure>
+<p>得到结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">un &#x3D;  b&#39;huge&#39;</span><br><span class="line">pw &#x3D;  b&#39;file&#39;</span><br></pre></td></tr></table></figure>
+<p>将结果提交表单后跳转到下一题网址。</p>
+]]></content>
+      <categories>
+        <category>python-challenge</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>益智游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python challenge7</title>
     <url>/2020/06/19/python-challenge7/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/oxygen.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc7-1.png"></p>

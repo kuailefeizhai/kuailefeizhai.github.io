@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    python challenge7 |  HA
+    python challenge8 |  HA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-python-challenge7" class="article article-type-post" itemscope
+  <article id="post-python-challenge8" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  python challenge7
+  python challenge8
 </h1>
   
 
@@ -49,8 +49,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/06/19/python-challenge7/" class="article-date">
-  <time datetime="2020-06-19T08:54:48.000Z" itemprop="datePublished">2020-06-19</time>
+      <a href="/2020/07/16/python-challenge8/" class="article-date">
+  <time datetime="2020-07-16T06:22:55.000Z" itemprop="datePublished">2020-07-16</time>
 </a>
       
   <div class="article-category">
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">289字</span>
+            <span class="post-count">257字</span>
         </span>
     </span>
 
@@ -100,23 +100,15 @@
       
 
       
-      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/oxygen.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc7-1.png"></p>
+      <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://www.pythonchallenge.com/pc/def/integrity.html" target="_blank" rel="noopener">网址</a><br><img src="/image/pc8-1.png"></p>
 <a id="more"></a>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目只有一张图片，网页源代码也没有内容，需要从图片中提取信息。<br>使用PIL(Pillow)库中的image：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">img &#x3D; Image.open(&quot;oxygen.png&quot;)</span><br></pre></td></tr></table></figure>
-<p>img内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(115, 115, 115, 255), (115, 115, 115, 255), (115, 115, 115, 255), (115, 115, 115, 255), (115, 115, 115, 255), (109, 109, 109, 255), (109, 109, 109, 255), (109, 109, 109, 255), (109, 109, 109, 255), (109, 109, 109, 255), (109, 109, 109, 255), (109, 109, 109, 255), (97, 97, 97, 255), (97, 97, 97, 255), (97, 97, 97, 255),......]</span><br></pre></td></tr></table></figure>
-<p>取图片中间灰色的部分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">row &#x3D; [img.getpixel((x, img.height &#x2F; 2)) for x in range(img.width)]</span><br></pre></td></tr></table></figure>
-<p>观察图片，在灰色区域的末尾有一段属于原图，剔除掉这部分，顺便去掉重复的元组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ords &#x3D; [r for r, g, b, a in row if r &#x3D;&#x3D; g &#x3D;&#x3D; b]</span><br><span class="line">ords &#x3D; ords[::7]</span><br></pre></td></tr></table></figure>
-<p>由于图片灰度值的范围都在[0, 255]之间，所以可以把他们当成ascll码来翻译：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;&quot;.join(map(chr, ords)))</span><br></pre></td></tr></table></figure>
-<p>得到译文：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smart guy, you made it. the next level is [105, 110, 116, 101, 103, 114, 105, 116, 121]</span><br></pre></td></tr></table></figure>
-<p>将这个结果按同样的规律翻译得到：integrity</p>
-<p>标准答案：</p>
-<p><a href="http://www.pythonchallenge.com/pcc/def/integrity.html" target="_blank" rel="noopener">http://www.pythonchallenge.com/pcc/def/integrity.html</a></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>点击图片中的蜜蜂（看起来像苍蝇）会弹出表单让输入用户名和密码以及提示信息inflate（chrome打开没有）<br><img src="/image/pc8-2.png"><br>“inflate”膨胀的反义词是“compress”压缩。在网页源代码中有用户名和密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">un: &#39;BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084&#39;</span><br><span class="line">pw: &#39;BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08&#39;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>这个开头是bzip2的压缩格式，引入bz2进行压缩（需要先将str转换成byte）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import bz2</span><br><span class="line"></span><br><span class="line">un &#x3D; bz2.decompress(b&#39;BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084&#39;)</span><br><span class="line">pw &#x3D; bz2.decompress(b&#39;BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08&#39;)</span><br><span class="line"></span><br><span class="line">print(&#39;un &#x3D; &#39;, un)</span><br><span class="line">print(&#39;pw &#x3D; &#39;, pw)</span><br></pre></td></tr></table></figure>
+<p>得到结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">un &#x3D;  b&#39;huge&#39;</span><br><span class="line">pw &#x3D;  b&#39;file&#39;</span><br></pre></td></tr></table></figure>
+<p>将结果提交表单后跳转到下一题网址。</p>
 
       
       <!-- reward -->
@@ -186,7 +178,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/06/19/python-challenge7/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/07/16/python-challenge8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -204,19 +196,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/07/16/python-challenge8/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            python challenge8
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/06/18/python-challenge6/" class="article-nav-link">
+      <a href="/2020/06/19/python-challenge7/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">python challenge6</div>
+        <div class="article-nav-title">python challenge7</div>
       </a>
     
   </nav>
